@@ -12,8 +12,10 @@
 		73A099972718C84B00D2C453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099962718C84B00D2C453 /* Assets.xcassets */; };
 		73A0999A2718C84B00D2C453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099992718C84B00D2C453 /* Preview Assets.xcassets */; };
 		73A099A42718C84B00D2C453 /* TalkToFelixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */; };
-		73A099AE2718C84B00D2C453 /* TalkToFelixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099AD2718C84B00D2C453 /* TalkToFelixUITests.swift */; };
-		73A099B02718C84B00D2C453 /* TalkToFelixUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099AF2718C84B00D2C453 /* TalkToFelixUITestsLaunchTests.swift */; };
+		73A099C22718C98200D2C453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C12718C98200D2C453 /* User.swift */; };
+		73A099C42718CB9900D2C453 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C32718CB9900D2C453 /* Voice.swift */; };
+		80AD16269A67B3399B585345 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1F55C6FE34D9D201C70A /* Conversation.swift */; };
+		80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD194CC672485E2C4399B7 /* ThisUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +44,10 @@
 		73A0999F2718C84B00D2C453 /* TalkToFelixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkToFelixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixTests.swift; sourceTree = "<group>"; };
 		73A099A92718C84B00D2C453 /* TalkToFelixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkToFelixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		73A099AD2718C84B00D2C453 /* TalkToFelixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixUITests.swift; sourceTree = "<group>"; };
-		73A099AF2718C84B00D2C453 /* TalkToFelixUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		73A099C12718C98200D2C453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		73A099C32718CB9900D2C453 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
+		80AD194CC672485E2C4399B7 /* ThisUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisUser.swift; sourceTree = "<group>"; };
+		80AD1F55C6FE34D9D201C70A /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,6 @@
 			children = (
 				73A099912718C84A00D2C453 /* TalkToFelix */,
 				73A099A22718C84B00D2C453 /* TalkToFelixTests */,
-				73A099AC2718C84B00D2C453 /* TalkToFelixUITests */,
 				73A099902718C84A00D2C453 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,7 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				73A099922718C84A00D2C453 /* TalkToFelixApp.swift */,
-				73A099942718C84A00D2C453 /* ContentView.swift */,
+				73A099BC2718C86800D2C453 /* Views */,
+				73A099BD2718C88800D2C453 /* ViewModels */,
+				73A099BE2718C89500D2C453 /* Models */,
 				73A099962718C84B00D2C453 /* Assets.xcassets */,
 				73A099982718C84B00D2C453 /* Preview Content */,
 			);
@@ -118,13 +123,30 @@
 			path = TalkToFelixTests;
 			sourceTree = "<group>";
 		};
-		73A099AC2718C84B00D2C453 /* TalkToFelixUITests */ = {
+		73A099BC2718C86800D2C453 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				73A099AD2718C84B00D2C453 /* TalkToFelixUITests.swift */,
-				73A099AF2718C84B00D2C453 /* TalkToFelixUITestsLaunchTests.swift */,
+				73A099942718C84A00D2C453 /* ContentView.swift */,
 			);
-			path = TalkToFelixUITests;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		73A099BD2718C88800D2C453 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		73A099BE2718C89500D2C453 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				73A099C12718C98200D2C453 /* User.swift */,
+				73A099C32718CB9900D2C453 /* Voice.swift */,
+				80AD194CC672485E2C4399B7 /* ThisUser.swift */,
+				80AD1F55C6FE34D9D201C70A /* Conversation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +279,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A099C42718CB9900D2C453 /* Voice.swift in Sources */,
 				73A099952718C84A00D2C453 /* ContentView.swift in Sources */,
 				73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */,
+				73A099C22718C98200D2C453 /* User.swift in Sources */,
+				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
+				80AD16269A67B3399B585345 /* Conversation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +300,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73A099B02718C84B00D2C453 /* TalkToFelixUITestsLaunchTests.swift in Sources */,
-				73A099AE2718C84B00D2C453 /* TalkToFelixUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
