@@ -3,10 +3,17 @@
 //
 
 import Foundation
+import SwiftUI
 
 protocol Database {
     
     func sendVoice(voice: Voice)
 
-    func getVoices(user: User) -> [Voice]
+    func getVoices(user: User) -> Result<[Voice],Error>
 }
+
+enum DatabaseError: Error {
+    case FailedToGetVoices
+}
+
+

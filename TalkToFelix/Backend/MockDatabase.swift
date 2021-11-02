@@ -8,12 +8,10 @@ class MockDatabase: Database {
 
     var voices: [Voice] = []
 
-    func sendVoice(voice: Voice) {
-        voices.append(voice)
-    }
+    func sendVoice(voice: Voice) {}
 
-    func getVoices(user: User) -> [Voice] {
-        return voices
+    func getVoices(user: User) -> Result<[Voice],Error> {
+        return Result.failure(DatabaseError.FailedToGetVoices)
     }
-
+    
 }

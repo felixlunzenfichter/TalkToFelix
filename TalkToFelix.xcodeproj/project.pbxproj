@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099922718C84A00D2C453 /* TalkToFelixApp.swift */; };
-		73A099952718C84A00D2C453 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099942718C84A00D2C453 /* ContentView.swift */; };
+		73A099952718C84A00D2C453 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099942718C84A00D2C453 /* ConversationView.swift */; };
 		73A099972718C84B00D2C453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099962718C84B00D2C453 /* Assets.xcassets */; };
 		73A0999A2718C84B00D2C453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099992718C84B00D2C453 /* Preview Assets.xcassets */; };
 		73A099A42718C84B00D2C453 /* TalkToFelixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */; };
@@ -41,7 +41,7 @@
 /* Begin PBXFileReference section */
 		73A0998F2718C84A00D2C453 /* TalkToFelix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkToFelix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A099922718C84A00D2C453 /* TalkToFelixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixApp.swift; sourceTree = "<group>"; };
-		73A099942718C84A00D2C453 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		73A099942718C84A00D2C453 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		73A099962718C84B00D2C453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73A099992718C84B00D2C453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		73A0999F2718C84B00D2C453 /* TalkToFelixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkToFelixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +133,7 @@
 		73A099BC2718C86800D2C453 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				73A099942718C84A00D2C453 /* ContentView.swift */,
+				73A099942718C84A00D2C453 /* ConversationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A099C42718CB9900D2C453 /* Voice.swift in Sources */,
-				73A099952718C84A00D2C453 /* ContentView.swift in Sources */,
+				73A099952718C84A00D2C453 /* ConversationView.swift in Sources */,
 				73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */,
 				73A099C22718C98200D2C453 /* User.swift in Sources */,
 				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
