@@ -28,15 +28,10 @@ struct ConversationView: View {
 
 struct ConversationView_Previews: PreviewProvider {
 
-    let viewModel = ConversationView.ViewModel(voices: [Voice(speaker: User(name: "Felix"), listener: User(name:"Carl"), audioData: Data()), Voice(speaker: User(name: "Carl"), listener: User(name: "Felix"), audioData: Data())])
-
     static var previews: some View {
         ConversationView(viewModel:
-                            ConversationView.ViewModel(voices:
-                                                        [Voice(speaker: User(name: "Felix"), listener: User(name:"Carl"), audioData: Data()),
-                                                         Voice(speaker: User(name: "Carl"), listener: User(name: "Felix"), audioData: Data())]
-                                                      )
-        )
+                            ConversationView.ViewModel()
+                         )
     }
 }
 

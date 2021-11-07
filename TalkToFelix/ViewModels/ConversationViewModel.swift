@@ -6,13 +6,13 @@ import Foundation
 
 extension ConversationView {
 
-    struct ViewModel {
+    class ViewModel: ObservableObject {
 
         let recordButtonText = "recordButtonText"
         
         let conversationPartner = "Carl"
 
-        var voices : [Voice] = []
+        @Published private(set) var voices : [Voice] = []
 
         func recordButtonClicked() {}
 
