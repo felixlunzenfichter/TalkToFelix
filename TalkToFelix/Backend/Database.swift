@@ -7,7 +7,7 @@ import SwiftUI
 
 protocol Database {
     
-    func getVoices(user: User) -> Result<[Voice],Error>
+    func getVoices() -> Result<[Voice],Error>
     
 }
 
