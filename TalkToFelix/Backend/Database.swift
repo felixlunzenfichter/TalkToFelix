@@ -7,9 +7,8 @@ import SwiftUI
 
 protocol Database {
     
-    func sendVoice(voice: Voice)
-
     func getVoices(user: User) -> Result<[Voice],Error>
+    
 }
 
 enum DatabaseError: Error {
