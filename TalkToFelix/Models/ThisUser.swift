@@ -11,7 +11,7 @@ import Foundation
 class ThisUser: User {
 
     init() {
-        super.init(id: UUID(), name: "Felix")
+        super.init(name: "Felix")
     }
 
 }

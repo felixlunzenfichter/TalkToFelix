@@ -8,12 +8,12 @@
 import Foundation
 
 class User {
-
-    let id: UUID
+    
+    let id = UUID()
+    
     var name: String
 
-    init(id: UUID, name: String) {
-        self.id = id
+    init(name: String) {
         self.name = name
     }
 
