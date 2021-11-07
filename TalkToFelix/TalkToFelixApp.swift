@@ -11,7 +11,7 @@ import SwiftUI
 struct TalkToFelixApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ConversationView()
         }
     }
 }

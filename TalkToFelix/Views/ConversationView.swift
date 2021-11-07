@@ -7,15 +7,37 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ConversationView: View {
+
+    var viewModel = ViewModel()
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(viewModel.voices) {voice in
+                        Text(voice.speaker.name)
+                    }
+                }
+                Button(viewModel.recordButtonText, action: viewModel.recordButtonClicked)
+            }
+        .navigationTitle("\(viewModel.conversationPartner)")
+        }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ConversationView_Previews: PreviewProvider {
+
+    let viewModel = ConversationView.ViewModel(voices: [Voice(speaker: User(name: "Felix"), listener: User(name:"Carl"), audioData: Data()), Voice(speaker: User(name: "Carl"), listener: User(name: "Felix"), audioData: Data())])
+
     static var previews: some View {
-        ContentView()
+        ConversationView(viewModel:
+                            ConversationView.ViewModel(voices:
+                                                        [Voice(speaker: User(name: "Felix"), listener: User(name:"Carl"), audioData: Data()),
+                                                         Voice(speaker: User(name: "Carl"), listener: User(name: "Felix"), audioData: Data())]
+                                                      )
+        )
     }
 }
+
+

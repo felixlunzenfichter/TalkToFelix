@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct Voice {
+struct Voice: Identifiable, Equatable{
+    
+    static func == (lhs: Voice, rhs: Voice) -> Bool {
+        lhs.id == rhs.id
+    }
 
     let id = UUID()
 

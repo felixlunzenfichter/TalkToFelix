@@ -4,12 +4,17 @@
 
 import Foundation
 
-class ConversationViewModel {
+extension ConversationView {
 
-    var database : Database
+    struct ViewModel {
 
-    init(database: Database) {
-        self.database = database
+        let recordButtonText = "recordButtonText"
+        
+        let conversationPartner = "Carl"
+
+        var voices : [Voice] = []
+
+        func recordButtonClicked() {}
+
     }
-
 }

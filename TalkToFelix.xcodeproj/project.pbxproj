@@ -11,9 +11,9 @@
 		73A099952718C84A00D2C453 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099942718C84A00D2C453 /* ConversationView.swift */; };
 		73A099972718C84B00D2C453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099962718C84B00D2C453 /* Assets.xcassets */; };
 		73A0999A2718C84B00D2C453 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099992718C84B00D2C453 /* Preview Assets.xcassets */; };
-		73A099A42718C84B00D2C453 /* TalkToFelixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */; };
 		73A099C22718C98200D2C453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C12718C98200D2C453 /* User.swift */; };
 		73A099C42718CB9900D2C453 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C32718CB9900D2C453 /* Voice.swift */; };
+		73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */; };
 		80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1E645142B204042E3CC1 /* MockDatabase.swift */; };
 		80AD16269A67B3399B585345 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1F55C6FE34D9D201C70A /* Conversation.swift */; };
 		80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */; };
@@ -29,13 +29,6 @@
 			remoteGlobalIDString = 73A0998E2718C84A00D2C453;
 			remoteInfo = TalkToFelix;
 		};
-		73A099AA2718C84B00D2C453 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 73A099872718C84A00D2C453 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 73A0998E2718C84A00D2C453;
-			remoteInfo = TalkToFelix;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -45,10 +38,9 @@
 		73A099962718C84B00D2C453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		73A099992718C84B00D2C453 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		73A0999F2718C84B00D2C453 /* TalkToFelixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkToFelixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixTests.swift; sourceTree = "<group>"; };
-		73A099A92718C84B00D2C453 /* TalkToFelixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TalkToFelixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A099C12718C98200D2C453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73A099C32718CB9900D2C453 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
+		73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
 		80AD1003291428CBED7EC18F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		80AD194CC672485E2C4399B7 /* ThisUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisUser.swift; sourceTree = "<group>"; };
 		80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
@@ -65,13 +57,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		73A0999C2718C84B00D2C453 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73A099A62718C84B00D2C453 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -95,7 +80,6 @@
 			children = (
 				73A0998F2718C84A00D2C453 /* TalkToFelix.app */,
 				73A0999F2718C84B00D2C453 /* TalkToFelixTests.xctest */,
-				73A099A92718C84B00D2C453 /* TalkToFelixUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,7 +109,7 @@
 		73A099A22718C84B00D2C453 /* TalkToFelixTests */ = {
 			isa = PBXGroup;
 			children = (
-				73A099A32718C84B00D2C453 /* TalkToFelixTests.swift */,
+				73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */,
 			);
 			path = TalkToFelixTests;
 			sourceTree = "<group>";
@@ -204,24 +188,6 @@
 			productReference = 73A0999F2718C84B00D2C453 /* TalkToFelixTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		73A099A82718C84B00D2C453 /* TalkToFelixUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73A099B92718C84B00D2C453 /* Build configuration list for PBXNativeTarget "TalkToFelixUITests" */;
-			buildPhases = (
-				73A099A52718C84B00D2C453 /* Sources */,
-				73A099A62718C84B00D2C453 /* Frameworks */,
-				73A099A72718C84B00D2C453 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				73A099AB2718C84B00D2C453 /* PBXTargetDependency */,
-			);
-			name = TalkToFelixUITests;
-			productName = TalkToFelixUITests;
-			productReference = 73A099A92718C84B00D2C453 /* TalkToFelixUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,10 +202,6 @@
 						CreatedOnToolsVersion = 13.0;
 					};
 					73A0999E2718C84B00D2C453 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 73A0998E2718C84A00D2C453;
-					};
-					73A099A82718C84B00D2C453 = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = 73A0998E2718C84A00D2C453;
 					};
@@ -260,7 +222,6 @@
 			targets = (
 				73A0998E2718C84A00D2C453 /* TalkToFelix */,
 				73A0999E2718C84B00D2C453 /* TalkToFelixTests */,
-				73A099A82718C84B00D2C453 /* TalkToFelixUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,13 +237,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		73A0999D2718C84B00D2C453 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73A099A72718C84B00D2C453 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -312,14 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73A099A42718C84B00D2C453 /* TalkToFelixTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73A099A52718C84B00D2C453 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,11 +277,6 @@
 			isa = PBXTargetDependency;
 			target = 73A0998E2718C84A00D2C453 /* TalkToFelix */;
 			targetProxy = 73A099A02718C84B00D2C453 /* PBXContainerItemProxy */;
-		};
-		73A099AB2718C84B00D2C453 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 73A0998E2718C84A00D2C453 /* TalkToFelix */;
-			targetProxy = 73A099AA2718C84B00D2C453 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -565,52 +507,6 @@
 			};
 			name = Release;
 		};
-		73A099BA2718C84B00D2C453 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W26GVS4M5S;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.connect.TalkToFelixUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TalkToFelix;
-			};
-			name = Debug;
-		};
-		73A099BB2718C84B00D2C453 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = W26GVS4M5S;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.connect.TalkToFelixUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TalkToFelix;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -637,15 +533,6 @@
 			buildConfigurations = (
 				73A099B72718C84B00D2C453 /* Debug */,
 				73A099B82718C84B00D2C453 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		73A099B92718C84B00D2C453 /* Build configuration list for PBXNativeTarget "TalkToFelixUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				73A099BA2718C84B00D2C453 /* Debug */,
-				73A099BB2718C84B00D2C453 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
