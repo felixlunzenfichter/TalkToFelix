@@ -26,14 +26,18 @@ class ConversationViewModelTests: XCTestCase {
         let viewModel = ConversationView.ViewModel(database: mockDatabase)
         
         let expectation = XCTestExpectation(description: "Publishes expected voices")
+        var expectedResult = [Voice]()
         
         // Act on the ViewModel to trigger the update
         viewModel
             .$voices
-            .dropFirst()
             .sink { value in
-                XCTAssertEqual(mockDatabase.voices, value)
-                expectation.fulfill()
+                XCTAssertEqual(expectedResult, value)
+                if (expectedResult == [Voice]()) {
+                    expectedResult = mockDatabase.voices
+                } else {
+                    expectation.fulfill()
+                }
             }
             .store(in: &cancellables)
         
