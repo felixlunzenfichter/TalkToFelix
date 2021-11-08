@@ -22,3 +22,18 @@ struct Voice: Identifiable, Equatable{
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
 
 }
+
+extension Voice {
+    static func fixture() -> Voice {
+        return Voice(speaker: .fixture(), listener: .fixture(), audioData: .fixture())
+    }
+}
+
+extension Data {
+    static let fixtureData = "00001111"
+    
+    static func fixture() -> Data {
+        return Data(base64Encoded: fixtureData)!
+    }
+}
+

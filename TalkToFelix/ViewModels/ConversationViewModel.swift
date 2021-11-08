@@ -3,16 +3,26 @@
 //
 
 import Foundation
+import Combine
 
 extension ConversationView {
 
     class ViewModel: ObservableObject {
-
-        let recordButtonText = "recordButtonText"
         
-        let conversationPartner = "Carl"
+        var cancellables = Set<AnyCancellable>()
 
         @Published private(set) var voices : [Voice] = []
+        
+        init(database: Database) {
+            database
+                .getVoices()
+                .sink(
+                    receiveCompletion: { _ in },
+                    receiveValue: { [weak self] value in
+                        self?.voices = value
+                    }
+                ).store(in: &cancellables)
+        }
 
         func recordButtonClicked() {}
 

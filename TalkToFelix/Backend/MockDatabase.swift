@@ -3,11 +3,29 @@
 //
 
 import Foundation
+import Combine
 
 class MockDatabase: Database {
-
-    func getVoices(user: User) -> Result<[Voice],Error> {
-        return Result.failure(DatabaseError.FailedToGetVoices)
-    }
     
+    var voices: [Voice] = []
+    
+    func setVoices(voices: [Voice]) {
+        self.voices = voices
+    }
+
+    func getVoices() -> AnyPublisher<[Voice],Error> {
+        return Future { $0(.success(self.voices)) }
+                   // Use a delay to simulate async fetch
+            .delay(for: 0.5, scheduler: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+        
+}
+
+extension MockDatabase {
+    static func fixture() -> MockDatabase {
+        let fixtureMockDatabase = MockDatabase()
+        fixtureMockDatabase.setVoices(voices: [Voice.fixture(), Voice.fixture(), Voice.fixture()])
+        return fixtureMockDatabase
+    }
 }

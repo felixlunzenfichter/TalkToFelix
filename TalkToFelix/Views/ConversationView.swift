@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConversationView: View {
 
-    var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel(database: MockDatabase())
 
     var body: some View {
         NavigationView {
@@ -19,9 +19,9 @@ struct ConversationView: View {
                         Text(voice.speaker.name)
                     }
                 }
-                Button(viewModel.recordButtonText, action: viewModel.recordButtonClicked)
+                Button("recordButtonText", action: viewModel.recordButtonClicked)
             }
-        .navigationTitle("\(viewModel.conversationPartner)")
+        .navigationTitle("Carli <3")
         }
     }
 }
@@ -29,10 +29,10 @@ struct ConversationView: View {
 struct ConversationView_Previews: PreviewProvider {
 
     static var previews: some View {
-        ConversationView(viewModel:
-                            ConversationView.ViewModel()
-                         )
+        ConversationView(viewModel:ConversationView.ViewModel(database: MockDatabase.fixture()))
     }
 }
+
+
 
 

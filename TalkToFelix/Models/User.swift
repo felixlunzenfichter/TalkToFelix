@@ -18,3 +18,9 @@ class User {
     }
 
 }
+
+extension User {
+    static func fixture() -> User {
+        return User(name: "Carli <3")
+    }
+}

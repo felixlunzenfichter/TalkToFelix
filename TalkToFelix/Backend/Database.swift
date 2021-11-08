@@ -4,10 +4,13 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 protocol Database {
     
-    func getVoices() -> Result<[Voice],Error>
+    func getVoices() -> AnyPublisher<[Voice],Error>
+    
+    
     
 }
 
