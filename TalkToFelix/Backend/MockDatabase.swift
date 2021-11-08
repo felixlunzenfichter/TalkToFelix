@@ -8,10 +8,6 @@ import Combine
 class MockDatabase: Database {
     
     var voices: [Voice] = []
-    
-    func setVoices(voices: [Voice]) {
-        self.voices = voices
-    }
 
     func getVoices() -> AnyPublisher<[Voice],Error> {
         return Future { $0(.success(self.voices)) }
@@ -23,9 +19,15 @@ class MockDatabase: Database {
 }
 
 extension MockDatabase {
+    
+    private func setVoices(voices: [Voice]) {
+        self.voices = voices
+    }
+    
     static func fixture() -> MockDatabase {
         let fixtureMockDatabase = MockDatabase()
         fixtureMockDatabase.setVoices(voices: [Voice.fixture(), Voice.fixture(), Voice.fixture()])
         return fixtureMockDatabase
     }
+    
 }
