@@ -16,10 +16,10 @@ class ConversationViewModelTests: XCTestCase {
     func testWhenViewModelIsIniaitlizedPublishesEmptyVoices() {
         let viewModel = ConversationView.ViewModel(database: MockDatabase.fixture())
         
-        XCTAssertTrue(viewModel.voices.isEmpty)
+        XCTAssertEqual(try viewModel.voices.get(), [Voice]())
     }
     
-    func testVoicesFetchingIsSuccessful() {
+    func testVoicesAreBeingFetchedSuccessfully() {
         
         // Arrange the ViewModel and its data source
         let firstExpectedResult : [Voice] = [Voice]()
@@ -36,7 +36,11 @@ class ConversationViewModelTests: XCTestCase {
         viewModel
             .$voices
             .sink { value in
-                XCTAssertEqual(expectedResult, value)
+                guard case .success(let voices) = value else {
+                    return XCTFail("Expected a successful Result, got: \(value)")
+                }
+                            
+                XCTAssertEqual(expectedResult, voices)
                 if (expectedResult == firstExpectedResult){
                     expectedResult = secondExpectedResult
                 } else {

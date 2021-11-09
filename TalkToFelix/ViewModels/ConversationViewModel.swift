@@ -11,7 +11,7 @@ extension ConversationView {
         
         var cancellables = Set<AnyCancellable>()
 
-        @Published private(set) var voices : [Voice] = []
+        @Published private(set) var voices : Result<[Voice],Error> = .success([])
         
         init(database: Database) {
             database
@@ -19,7 +19,7 @@ extension ConversationView {
                 .sink(
                     receiveCompletion: { _ in },
                     receiveValue: { [weak self] value in
-                        self?.voices = value
+                        self?.voices = .success(value)
                     }
                 ).store(in: &cancellables)
         }
