@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConversationView: View {
 
-    @ObservedObject var viewModel = ViewModel(database: MockDatabase())
+    @ObservedObject var viewModel = ViewModel(database: MockDatabase.fixture())
 
     var body: some View {
         NavigationView {
