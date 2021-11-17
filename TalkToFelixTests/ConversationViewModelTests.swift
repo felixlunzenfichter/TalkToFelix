@@ -28,9 +28,8 @@ class ConversationViewModelTests: XCTestCase {
         let mockDatabase = MockDatabase(returning: .success(secondExpectedResult))
         let viewModel = ConversationView.ViewModel(database: mockDatabase)
         
-        let expectation = XCTestExpectation(description: "Publishes expected voices")
+        let expectation = XCTestExpectation(description: "Publishes expected voices successfully")
         var expectedResult = firstExpectedResult
-
         
         // Act on the ViewModel to trigger the update
         viewModel
@@ -39,9 +38,9 @@ class ConversationViewModelTests: XCTestCase {
                 guard case .success(let voices) = value else {
                     return XCTFail("Expected a successful Result, got: \(value)")
                 }
-                            
+                
                 XCTAssertEqual(expectedResult, voices)
-                if (expectedResult == firstExpectedResult){
+                if (voices == firstExpectedResult){
                     expectedResult = secondExpectedResult
                 } else {
                     expectation.fulfill()
@@ -55,6 +54,27 @@ class ConversationViewModelTests: XCTestCase {
     
     func testWhenVoicesFetchingFailsPublishesError() {
         
+        let expectedError = TestError()
+        let mockDatabase = MockDatabase(returning: .failure(expectedError))
+        let viewModel = ConversationView.ViewModel(database: mockDatabase)
+        
+        let expectation = XCTestExpectation(description: "Publishes an error")
+        
+        viewModel.$voices
+            .dropFirst()
+            .sink { value in
+                guard case .failure(let error) = value else {
+                    return XCTFail("Expected a failing result but got \(value)")
+                }
+                
+                XCTAssertEqual(expectedError, error as? TestError)
+                expectation.fulfill()
+                
+            }
+            .store(in: &cancellables)
+        
+        // Assert the expected behavior
+        wait(for: [expectation], timeout: 1)
+        
     }
-
 }

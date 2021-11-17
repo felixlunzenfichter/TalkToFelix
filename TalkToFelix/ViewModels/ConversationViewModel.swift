@@ -17,7 +17,12 @@ extension ConversationView {
             database
                 .getVoices()
                 .sink(
-                    receiveCompletion: { _ in },
+                    receiveCompletion: { [weak self] completion in
+                        guard case .failure(let error) = completion else {
+                            return
+                        }
+                        self?.voices = .failure(error)
+                    },
                     receiveValue: { [weak self] value in
                         self?.voices = .success(value)
                     }
