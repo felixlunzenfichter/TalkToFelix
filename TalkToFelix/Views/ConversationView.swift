@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConversationView: View {
     
-    @ObservedObject var viewModel = ViewModel(database: MockDatabase.fixture())
+    @ObservedObject var viewModel: ViewModel = .fixture()
     
     var body: some View {
         NavigationView {
@@ -41,7 +41,7 @@ struct ConversationView: View {
 
 struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConversationView(viewModel:ConversationView.ViewModel(database: MockDatabase.fixture()))
+        ConversationView()
     }
 }
 

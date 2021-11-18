@@ -14,7 +14,7 @@ class ConversationViewModelTests: XCTestCase {
     var cancellables = Set<AnyCancellable>()
 
     func testWhenViewModelIsIniaitlizedPublishesEmptyVoices() {
-        let viewModel = ConversationView.ViewModel(database: MockDatabase.fixture())
+        let viewModel = ConversationView.ViewModel.fixture()
         
         XCTAssertEqual(try viewModel.voices.get(), [Voice]())
     }
