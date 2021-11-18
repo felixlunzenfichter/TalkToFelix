@@ -77,4 +77,18 @@ class ConversationViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
         
     }
+    
+    func testStateTransitionToAndFromRecordingState() {
+        let viewModel = ConversationView.ViewModel.fixture()
+        
+        XCTAssert(!viewModel.isRecording)
+        
+        viewModel.recordButtonClicked()
+        
+        XCTAssert(viewModel.isRecording)
+        
+        viewModel.recordButtonClicked()
+        
+        XCTAssert(!viewModel.isRecording)
+    }
 }

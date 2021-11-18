@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ConversationView: View {
-
+    
     @ObservedObject var viewModel = ViewModel(database: MockDatabase.fixture())
-
+    
     var body: some View {
         NavigationView {
             switch viewModel.voices {
@@ -21,6 +21,14 @@ struct ConversationView: View {
                             Text(voice.speaker.name)
                         }
                     }
+                switch viewModel.isRecording {
+                case true:
+                    Text("Recording")
+                case false:
+                    Text("Not recording")
+                }
+                    
+                    
                     Button("recordButtonText", action: viewModel.recordButtonClicked)
                 }.navigationTitle("Carli <3")
             case .failure(let error):
@@ -32,7 +40,6 @@ struct ConversationView: View {
 }
 
 struct ConversationView_Previews: PreviewProvider {
-
     static var previews: some View {
         ConversationView(viewModel:ConversationView.ViewModel(database: MockDatabase.fixture()))
     }

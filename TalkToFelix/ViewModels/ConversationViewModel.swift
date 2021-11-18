@@ -6,12 +6,13 @@ import Foundation
 import Combine
 
 extension ConversationView {
-
+    
     class ViewModel: ObservableObject {
         
         var cancellables = Set<AnyCancellable>()
 
         @Published private(set) var voices : Result<[Voice],Error> = .success([])
+        @Published private(set) var isRecording: Bool = false
         
         init(database: Database) {
             database
@@ -28,8 +29,13 @@ extension ConversationView {
                     }
                 ).store(in: &cancellables)
         }
-
-        func recordButtonClicked() {}
-
+        
+        func recordButtonClicked() {
+            isRecording = !isRecording
+        }
+        
+        static func fixture() -> ViewModel {
+            return ViewModel(database: MockDatabase.fixture())
+        }
     }
 }

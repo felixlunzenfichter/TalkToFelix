@@ -7,9 +7,7 @@ import SwiftUI
 import Combine
 
 protocol Database {
-    
     func getVoices() -> AnyPublisher<[Voice],Error>
-    
 }
 
 enum DatabaseError: Error {

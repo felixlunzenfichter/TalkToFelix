@@ -19,7 +19,6 @@ class MockDatabase: Database {
             .delay(for: 0.5, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
-        
 }
 
 extension MockDatabase {
