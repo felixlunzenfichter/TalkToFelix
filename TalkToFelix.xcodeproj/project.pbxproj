@@ -15,6 +15,8 @@
 		73A099C22718C98200D2C453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C12718C98200D2C453 /* User.swift */; };
 		73A099C42718CB9900D2C453 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C32718CB9900D2C453 /* Voice.swift */; };
 		73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */; };
+		73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */; };
+		73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */; };
 		80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1E645142B204042E3CC1 /* MockDatabase.swift */; };
 		80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */; };
 		80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD194CC672485E2C4399B7 /* ThisUser.swift */; };
@@ -42,6 +44,8 @@
 		73A099C12718C98200D2C453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73A099C32718CB9900D2C453 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
 		73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
+		73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueSubjectConverterTests.swift; sourceTree = "<group>"; };
+		73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueConverter.swift; sourceTree = "<group>"; };
 		80AD1003291428CBED7EC18F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		80AD194CC672485E2C4399B7 /* ThisUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisUser.swift; sourceTree = "<group>"; };
 		80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 		73A099912718C84A00D2C453 /* TalkToFelix */ = {
 			isa = PBXGroup;
 			children = (
+				73C5FB05274C905B00C4E2B8 /* TypeConverters */,
 				73A099922718C84A00D2C453 /* TalkToFelixApp.swift */,
 				73A099BC2718C86800D2C453 /* Views */,
 				73A099BD2718C88800D2C453 /* ViewModels */,
@@ -111,6 +116,7 @@
 			children = (
 				73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */,
 				7349809D273AA16A00E1EE48 /* TestError.swift */,
+				73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */,
 			);
 			path = TalkToFelixTests;
 			sourceTree = "<group>";
@@ -139,6 +145,14 @@
 				80AD194CC672485E2C4399B7 /* ThisUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		73C5FB05274C905B00C4E2B8 /* TypeConverters */ = {
+			isa = PBXGroup;
+			children = (
+				73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */,
+			);
+			path = TypeConverters;
 			sourceTree = "<group>";
 		};
 		80AD1CECF0DAD49A9996478A /* Backend */ = {
@@ -257,6 +271,7 @@
 				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
 				80AD1E9EBC4CCB4A7A972D63 /* Database.swift in Sources */,
 				80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */,
+				73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */,
 				80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7349809E273AA16A00E1EE48 /* TestError.swift in Sources */,
+				73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */,
 				73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
