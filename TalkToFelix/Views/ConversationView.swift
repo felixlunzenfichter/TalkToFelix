@@ -21,15 +21,7 @@ struct ConversationView: View {
                             Text(voice.speaker.name)
                         }
                     }
-                switch viewModel.isRecording {
-                case true:
-                    Text("Recording")
-                case false:
-                    Text("Not recording")
-                }
-                    
-                    
-                    Button("recordButtonText", action: viewModel.recordButtonClicked)
+                    RecordingView(viewModel: self.viewModel) 
                 }.navigationTitle("Carli <3")
             case .failure(let error):
                 Text("An error occurred:")
@@ -37,6 +29,7 @@ struct ConversationView: View {
             }
         }
     }
+    
 }
 
 struct ConversationView_Previews: PreviewProvider {
