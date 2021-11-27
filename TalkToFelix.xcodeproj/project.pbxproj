@@ -97,6 +97,7 @@
 				73A099BD2718C88800D2C453 /* ViewModels */,
 				73A099BE2718C89500D2C453 /* Models */,
 				80AD1CECF0DAD49A9996478A /* Backend */,
+				73C5FB05274C905B00C4E2B8 /* TypeConverters */,
 				73A099962718C84B00D2C453 /* Assets.xcassets */,
 				73A099982718C84B00D2C453 /* Preview Content */,
 			);

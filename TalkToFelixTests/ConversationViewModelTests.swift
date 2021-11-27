@@ -9,10 +9,11 @@ import XCTest
 @testable import TalkToFelix
 import Combine
 
+@available(iOS 15.0.0, *)
 class ConversationViewModelTests: XCTestCase {
     
     var cancellables = Set<AnyCancellable>()
-
+    
     func testWhenViewModelIsIniaitlizedPublishesEmptyVoices() {
         let viewModel = ConversationView.ViewModel.fixture()
         
@@ -78,7 +79,7 @@ class ConversationViewModelTests: XCTestCase {
         
     }
     
-    func testStateTransitionToAndFromRecordingState() {
+    func testStateTransitionToAndFromRecordingState() async {
         let viewModel = ConversationView.ViewModel.fixture()
         
         XCTAssert(!viewModel.isRecording)
@@ -91,4 +92,31 @@ class ConversationViewModelTests: XCTestCase {
         
         XCTAssert(!viewModel.isRecording)
     }
+    
+    
+    func testStopRecordingAddsAVoiceToTheConversation() async {
+        let initialVoiceInChat = [Voice.fixture()]
+        let viewModel = ConversationView.ViewModel(database: MockDatabase(returning: .success(initialVoiceInChat)))
+        
+        let expectation = XCTestExpectation(description: "Expected 2 voices in the conversation")
+        
+        await Task.sleep(1 * NSEC_PER_SEC)
+        
+        viewModel.recordButtonClicked()
+        viewModel.recordButtonClicked()
+        
+        viewModel.$voices
+            .sink { value in
+                guard case .success(let voices) = value else {
+                    return XCTFail("Expected 2 successfully delivered voices but got \(value)")
+                }
+                
+                XCTAssertEqual(voices.count, 2)
+                expectation.fulfill()
+                
+            }.store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1.5)
+    }
 }
+
