@@ -12,14 +12,10 @@ struct RecordingView: View {
     @ObservedObject var viewModel: ConversationView.ViewModel
     
     var body: some View {
-        VStack {
-            switch viewModel.isRecording {
-            case true:
-                Text("Recording")
-            case false:
-                Text("Not recording")
-            }
-            Button("recordButtonText", action: viewModel.recordButtonClicked)
+        HStack {
+            Spacer()
+            RecordingButton(action: viewModel.recordButtonClicked, size: 60).padding()
+                .frame(width: 80, height: 80, alignment: .center)
         }
     }
     

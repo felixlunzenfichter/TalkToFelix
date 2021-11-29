@@ -17,6 +17,7 @@
 		73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */; };
 		73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */; };
 		73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */; };
+		73C5D12827541C6100F1FAF0 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12727541C6100F1FAF0 /* RecordingButton.swift */; };
 		73C5FB092751B19000C4E2B8 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB082751B19000C4E2B8 /* RecordingView.swift */; };
 		80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1E645142B204042E3CC1 /* MockDatabase.swift */; };
 		80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */; };
@@ -47,6 +48,7 @@
 		73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
 		73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueSubjectConverterTests.swift; sourceTree = "<group>"; };
 		73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueConverter.swift; sourceTree = "<group>"; };
+		73C5D12727541C6100F1FAF0 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 		73C5FB082751B19000C4E2B8 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		80AD1003291428CBED7EC18F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		80AD194CC672485E2C4399B7 /* ThisUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisUser.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				73A099942718C84A00D2C453 /* ConversationView.swift */,
 				73C5FB082751B19000C4E2B8 /* RecordingView.swift */,
+				73C5D12727541C6100F1FAF0 /* RecordingButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73A099C42718CB9900D2C453 /* Voice.swift in Sources */,
+				73C5D12827541C6100F1FAF0 /* RecordingButton.swift in Sources */,
 				73A099952718C84A00D2C453 /* ConversationView.swift in Sources */,
 				73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */,
 				73A099C22718C98200D2C453 /* User.swift in Sources */,

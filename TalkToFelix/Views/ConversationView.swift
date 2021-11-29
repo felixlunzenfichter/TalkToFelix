@@ -21,7 +21,7 @@ struct ConversationView: View {
                             Text(voice.speaker.name)
                         }
                     }
-                    RecordingView(viewModel: self.viewModel) 
+                    RecordingView(viewModel: self.viewModel)
                 }.navigationTitle("Carli <3")
             case .failure(let error):
                 Text("An error occurred:")
