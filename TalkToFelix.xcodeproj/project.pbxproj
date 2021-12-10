@@ -17,6 +17,9 @@
 		73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */; };
 		73C5D12827541C6100F1FAF0 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12727541C6100F1FAF0 /* RecordingButton.swift */; };
 		73C5D12A275B0B5400F1FAF0 /* RecordingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D129275B0B5400F1FAF0 /* RecordingProgressView.swift */; };
+		73C5D12E275B0F7E00F1FAF0 /* RecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */; };
+		73C5D130275B129300F1FAF0 /* MyRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12F275B129300F1FAF0 /* MyRecorder.swift */; };
+		73C5D132275CE26B00F1FAF0 /* Recorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D131275CE26B00F1FAF0 /* Recorder.swift */; };
 		73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */; };
 		73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */; };
 		73C5FB092751B19000C4E2B8 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB082751B19000C4E2B8 /* RecordingView.swift */; };
@@ -49,6 +52,10 @@
 		73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
 		73C5D12727541C6100F1FAF0 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 		73C5D129275B0B5400F1FAF0 /* RecordingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingProgressView.swift; sourceTree = "<group>"; };
+		73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderTests.swift; sourceTree = "<group>"; };
+		73C5D12F275B129300F1FAF0 /* MyRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecorder.swift; sourceTree = "<group>"; };
+		73C5D131275CE26B00F1FAF0 /* Recorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recorder.swift; sourceTree = "<group>"; };
+		73C5D1332762891500F1FAF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueSubjectConverterTests.swift; sourceTree = "<group>"; };
 		73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueConverter.swift; sourceTree = "<group>"; };
 		73C5FB082751B19000C4E2B8 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
@@ -97,6 +104,7 @@
 		73A099912718C84A00D2C453 /* TalkToFelix */ = {
 			isa = PBXGroup;
 			children = (
+				73C5D1332762891500F1FAF0 /* Info.plist */,
 				73A099922718C84A00D2C453 /* TalkToFelixApp.swift */,
 				73A099BC2718C86800D2C453 /* Views */,
 				73A099BD2718C88800D2C453 /* ViewModels */,
@@ -124,6 +132,7 @@
 				73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */,
 				7349809D273AA16A00E1EE48 /* TestError.swift */,
 				73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */,
+				73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */,
 			);
 			path = TalkToFelixTests;
 			sourceTree = "<group>";
@@ -160,6 +169,8 @@
 		73C5D12C275B0EEA00F1FAF0 /* AudioTools */ = {
 			isa = PBXGroup;
 			children = (
+				73C5D131275CE26B00F1FAF0 /* Recorder.swift */,
+				73C5D12F275B129300F1FAF0 /* MyRecorder.swift */,
 			);
 			path = AudioTools;
 			sourceTree = "<group>";
@@ -283,8 +294,10 @@
 			files = (
 				73A099C42718CB9900D2C453 /* Voice.swift in Sources */,
 				73C5D12827541C6100F1FAF0 /* RecordingButton.swift in Sources */,
+				73C5D130275B129300F1FAF0 /* MyRecorder.swift in Sources */,
 				73A099952718C84A00D2C453 /* ConversationView.swift in Sources */,
 				73C5D12A275B0B5400F1FAF0 /* RecordingProgressView.swift in Sources */,
+				73C5D132275CE26B00F1FAF0 /* Recorder.swift in Sources */,
 				73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */,
 				73A099C22718C98200D2C453 /* User.swift in Sources */,
 				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
@@ -303,6 +316,7 @@
 				7349809E273AA16A00E1EE48 /* TestError.swift in Sources */,
 				73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */,
 				73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */,
+				73C5D12E275B0F7E00F1FAF0 /* RecorderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +458,8 @@
 				DEVELOPMENT_TEAM = W26GVS4M5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkToFelix/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Speak into the mic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,6 +490,8 @@
 				DEVELOPMENT_TEAM = W26GVS4M5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TalkToFelix/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Speak into the mic";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
