@@ -10,7 +10,7 @@ import AVFoundation
 
 class MyRecorder: Recorder {
     
-    let audioFilename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("recording.m4a")
+    let audioFilename: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("recording.m4a")
     
     let settings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -24,7 +24,13 @@ class MyRecorder: Recorder {
     }()
     
     lazy var audioData: Data = {
-        try! Data(contentsOf: audioFilename)
+        var data: Data
+        do {
+            data = try Data(contentsOf: audioFilename)
+        } catch {
+            return Data()
+        }
+        return data
     }()
     
     private var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
@@ -42,9 +48,10 @@ class MyRecorder: Recorder {
         audioRecorder.record()
     }
     
-    func stop() {
-        audioRecorder.stop()
+    func stop() -> Data {
+        audioRecorder?.stop()
         audioRecorder = nil
+        return audioData
     }
     
     init() {

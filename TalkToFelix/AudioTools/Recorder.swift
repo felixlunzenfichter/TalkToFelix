@@ -10,5 +10,5 @@ import Foundation
 protocol Recorder {
     var length: Double {get}
     func start()
-    func stop()
+    func stop() -> Data
 }
