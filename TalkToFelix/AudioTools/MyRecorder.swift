@@ -12,16 +12,9 @@ class MyRecorder: Recorder {
     
     let audioFilename: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("recording.m4a")
     
-    let settings = [
-        AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-        AVSampleRateKey: 12000,
-        AVNumberOfChannelsKey: 1,
-        AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue
-    ]
-    
-    lazy var length: Double = {
+    var length: Double {
         return audioRecorder?.currentTime ?? 0
-    }()
+    }
     
     lazy var audioData: Data = {
         var data: Data
@@ -35,6 +28,13 @@ class MyRecorder: Recorder {
     
     private var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
     private var audioRecorder: AVAudioRecorder!
+    
+    private let settings = [
+        AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+        AVSampleRateKey: 12000,
+        AVNumberOfChannelsKey: 1,
+        AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue
+    ]
     
     func start() {
         do {

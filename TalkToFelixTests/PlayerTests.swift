@@ -15,7 +15,7 @@ class PlayerTests: XCTestCase {
     let data = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!))
     
     func testInitializePlayer() {
-        let player: Player = MyPlayer(data: data)
+        let _: Player = MyPlayer(data: data)
     }
     
     func testPlayAudio() {

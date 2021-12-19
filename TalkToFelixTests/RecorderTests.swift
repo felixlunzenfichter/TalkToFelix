@@ -11,6 +11,7 @@ import XCTest
 class RecorderTests: XCTestCase {
     
     let halfASecond: UInt32 = 500000
+    let precision: Double = 0.1
     
     func testLengthOfRecordingIsZeroAtStart() {
         let recorder: Recorder = MyRecorder()
@@ -19,27 +20,36 @@ class RecorderTests: XCTestCase {
     
     func testRecordForHalfASecond() {
         let recorder: Recorder = MyRecorder()
+        let recordingExpectedLength = 0.5
         
         recorder.start()
         usleep(halfASecond)
         let recordingLength = recorder.length
         
-        XCTAssertGreaterThan(recordingLength, 0.4)
-        XCTAssertLessThan(recordingLength, 0.6)
+        XCTAssertGreaterThan(recordingLength, recordingExpectedLength - precision)
+        XCTAssertLessThan(recordingLength, recordingExpectedLength + precision)
     }
     
-    func testRecordThenStopThenRecordForHalfASecond() {
+    func testRecordForAQuarterSecondThenStopThenRecordForHalfASecond() {
         let recorder: Recorder = MyRecorder()
+        let firstRecordingExpectedLength = 0.25
+        let secondRecorgingExpectedLength = 0.5
+        
+        recorder.start()
+        usleep(halfASecond/2)
+        let firstRecordingLength = recorder.length
+        _ = recorder.stop()
         
         recorder.start()
         usleep(halfASecond)
-        recorder.stop()
-        recorder.start()
-        usleep(halfASecond)
-        let recordingLength = recorder.length
+        let secondRecordingLength = recorder.length
+        _ = recorder.stop()
+                
+        XCTAssertGreaterThan(firstRecordingLength, firstRecordingExpectedLength - precision)
+        XCTAssertLessThan(firstRecordingLength, firstRecordingExpectedLength + precision)
         
-        XCTAssertGreaterThan(recordingLength, 0.4)
-        XCTAssertLessThan(recordingLength, 0.6)
+        XCTAssertGreaterThan(secondRecordingLength, secondRecorgingExpectedLength - precision)
+        XCTAssertLessThan(secondRecordingLength, secondRecorgingExpectedLength + precision)
     }
     
     override class func tearDown() {
