@@ -11,6 +11,7 @@ import XCTest
 class RecorderTests: XCTestCase {
     
     let halfASecond: UInt32 = 500000
+    let OneTenthOfASecond: UInt32 = 100000
     let precision: Double = 0.1
     
     func testLengthOfRecordingIsZeroAtStart() {
@@ -50,6 +51,21 @@ class RecorderTests: XCTestCase {
         
         XCTAssertGreaterThan(secondRecordingLength, secondRecorgingExpectedLength - precision)
         XCTAssertLessThan(secondRecordingLength, secondRecorgingExpectedLength + precision)
+    }
+    
+    func testAudioDataIsEmptyAfterInitialization() {
+        let recorder: Recorder = MyRecorder()
+        let data = recorder.stop()
+        XCTAssertEqual(Data(), data)
+    }
+    
+    func testAudioDataIsNotEmptyAfterRecording() {
+        let recorder: Recorder = MyRecorder()
+        recorder.start()
+        usleep(OneTenthOfASecond)
+        let data = recorder.stop()
+        
+        XCTAssertNotEqual(Data(), data)
     }
     
     override class func tearDown() {

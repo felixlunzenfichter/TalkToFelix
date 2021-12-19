@@ -15,8 +15,11 @@ class MyRecorder: Recorder {
     var length: Double {
         return audioRecorder?.currentTime ?? 0
     }
-    
-    lazy var audioData: Data = {
+
+    private var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
+    private var audioRecorder: AVAudioRecorder!
+
+    private var audioData: Data {
         var data: Data
         do {
             data = try Data(contentsOf: audioFilename)
@@ -24,11 +27,8 @@ class MyRecorder: Recorder {
             return Data()
         }
         return data
-    }()
-    
-    private var recordingSession: AVAudioSession = AVAudioSession.sharedInstance()
-    private var audioRecorder: AVAudioRecorder!
-    
+    }
+
     private let settings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
         AVSampleRateKey: 12000,
