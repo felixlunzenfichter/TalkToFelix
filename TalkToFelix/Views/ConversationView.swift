@@ -29,7 +29,6 @@ struct ConversationView: View {
             }
         }
     }
-    
 }
 
 struct ConversationView_Previews: PreviewProvider {

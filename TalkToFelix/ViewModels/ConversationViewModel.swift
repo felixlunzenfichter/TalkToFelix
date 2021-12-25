@@ -4,6 +4,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 extension ConversationView {
     
@@ -14,6 +15,12 @@ extension ConversationView {
         @Published private(set) var voices : Result<[Voice],Error> = .success([])
         @Published private(set) var isRecording: Bool = false
         
+        @Published var recorder: Recorder = MyRecorder()
+
+        public var recordingLength: Double {
+            (round(10 * recorder.length) / 10)
+        }
+
         init(database: Database) {
             database
                 .getVoices()
@@ -33,6 +40,9 @@ extension ConversationView {
         func recordButtonClicked() {
             if(isRecording) {
                 addVoice()
+                let _ = recorder.stop()
+            } else {
+                recorder.start()
             }
             isRecording = !isRecording
         }

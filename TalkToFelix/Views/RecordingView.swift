@@ -13,7 +13,7 @@ struct RecordingView: View {
     
     var body: some View {
         HStack {
-            RecordingProgressView()
+            RecordingProgressView(viewModel: viewModel)
             Spacer()
             RecordingButton(
                 action:viewModel.recordButtonClicked,

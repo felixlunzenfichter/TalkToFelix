@@ -91,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		733F762C27774BFB00281E3B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7349809D273AA16A00E1EE48 /* TestError.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		73A099862718C84A00D2C453 = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +146,8 @@
 		73A099A22718C84B00D2C453 /* TalkToFelixTests */ = {
 			isa = PBXGroup;
 			children = (
+				733F762C27774BFB00281E3B /* Helpers */,
 				73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */,
-				7349809D273AA16A00E1EE48 /* TestError.swift */,
 				73C5FB03274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift */,
 				73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */,
 				73C5D13F2763035F00F1FAF0 /* PlayerTests.swift */,
