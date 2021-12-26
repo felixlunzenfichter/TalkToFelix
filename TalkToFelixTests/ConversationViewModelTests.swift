@@ -37,17 +37,17 @@ import Combine
 
         // Act on the ViewModel to trigger the update
         viewModel.$voices.sink {value in
-                    guard case .success(let voices) = value else {
-                        return XCTFail("Expected a successful Result, got: \(value)")
-                    }
+            guard case .success(let voices) = value else {
+                return XCTFail("Expected a successful Result, got: \(value)")
+            }
 
-                    XCTAssertEqual(expectedResult, voices)
-                    if (voices == firstExpectedResult) {
-                        expectedResult = secondExpectedResult
-                    } else {
-                        expectation.fulfill()
-                    }
-                }.store(in: &cancellables)
+            XCTAssertEqual(expectedResult, voices)
+            if (voices == firstExpectedResult) {
+                expectedResult = secondExpectedResult
+            } else {
+                expectation.fulfill()
+            }
+        }.store(in: &cancellables)
 
         // Assert the expected behavior
         wait(for: [expectation], timeout: 1)
@@ -62,14 +62,14 @@ import Combine
         let expectation = XCTestExpectation(description: "Publishes an error")
 
         viewModel.$voices.dropFirst().sink {value in
-                    guard case .failure(let error) = value else {
-                        return XCTFail("Expected a failing result but got \(value)")
-                    }
+            guard case .failure(let error) = value else {
+                return XCTFail("Expected a failing result but got \(value)")
+            }
 
-                    XCTAssertEqual(expectedError, error as? TestError)
-                    expectation.fulfill()
+            XCTAssertEqual(expectedError, error as? TestError)
+            expectation.fulfill()
 
-                }.store(in: &cancellables)
+        }.store(in: &cancellables)
 
         // Assert the expected behavior
         wait(for: [expectation], timeout: 1)
@@ -126,26 +126,44 @@ import Combine
 
         viewModel.recordButtonClicked()
 
-        usleep(halfASecond / 5)
-        let firstLength = viewModel.recordingLength
+        var round: Double = 0
 
-        XCTAssertEqual(firstLength, 0.1)
+        let expectation = XCTestExpectation(description: "recordinglength is published once every 0.1 seconds")
 
-        usleep(halfASecond / 5)
-        let secondLength = viewModel.recordingLength
+        viewModel.$recordingLength.sink() {value in
+            defer {round += 1}
 
-        XCTAssertEqual(0.2, secondLength)
+            XCTAssertEqual(value, round / 10)
+            print(value)
+
+            if (round == 3.0) {
+                expectation.fulfill()
+                self.cancellables.removeAll()
+            }
+        }.store(in: &cancellables)
+
+        wait(for: [expectation], timeout: 0.35)
     }
 
     func testRecordingLengthIsZeroAgainAfterSending() {
         let viewModel = ConversationView.ViewModel.fixture()
+        var round: Double = 0
+        let expectation = XCTestExpectation(description: "Length of current recording is zero after sending.")
+
+        viewModel.$recordingLength.sink() {value in
+            defer {round += 1}
+            if (round == 2.0) {
+                XCTAssertEqual(value, 0.0)
+                expectation.fulfill()
+            }
+        }.store(in: &cancellables)
 
         viewModel.recordButtonClicked()
-        usleep(halfASecond / 5)
-        viewModel.recordButtonClicked()
+        Timer.scheduledTimer(withTimeInterval: 0.15, repeats: false) {_ in
+            viewModel.recordButtonClicked()
+        }
 
-        let length: Double = viewModel.recordingLength
-        XCTAssertEqual(length, 0)
+        wait(for: [expectation], timeout: 0.3)
     }
 
 }

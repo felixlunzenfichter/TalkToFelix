@@ -8,18 +8,13 @@
 import SwiftUI
 
 struct RecordingProgressView: View {
-    
+
     @ObservedObject var viewModel: ConversationView.ViewModel
-    
-    @State var length: Double = 0.0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
-    
+
     var body: some View {
-        Text("\(length, specifier: "%.1f")").onReceive(timer, perform: { _ in
-            length = viewModel.recordingLength
-        })
+        Text("\(viewModel.recordingLength, specifier: "%.1f")")
     }
-    
+
     init(viewModel: ConversationView.ViewModel) {
         self.viewModel = viewModel
     }
