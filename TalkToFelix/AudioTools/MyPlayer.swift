@@ -13,6 +13,8 @@ class MyPlayer: Player {
     var audioPlayer: AVAudioPlayer!
     
     func play() {
+        try! AVAudioSession.sharedInstance().setCategory(.playback)
+        try! AVAudioSession.sharedInstance().setActive(true)
         audioPlayer.play()
     }
     
