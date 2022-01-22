@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConversationView: View {
     
-    @ObservedObject var viewModel: ViewModel = .fixture()
+    @StateObject var viewModel: ViewModel = .fixture()
     
     var body: some View {
         NavigationView {
