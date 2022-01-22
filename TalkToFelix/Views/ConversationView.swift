@@ -21,13 +21,13 @@ struct ConversationView: View {
                             VoiceView(voice: voice)
                         }
                     }
-                    RecordingView(viewModel: self.viewModel)
+                    RecordingView()
                 }.navigationTitle("Carli <3")
             case .failure(let error):
                 Text("An error occurred:")
                 Text(error.localizedDescription).italic()
             }
-        }
+        }.environmentObject(viewModel)
     }
 }
 

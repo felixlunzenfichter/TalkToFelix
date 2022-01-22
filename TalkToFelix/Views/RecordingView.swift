@@ -9,11 +9,11 @@ import SwiftUI
 
 struct RecordingView: View {
     
-    @ObservedObject var viewModel: ConversationView.ViewModel
+    @EnvironmentObject var viewModel: ConversationView.ViewModel
     
     var body: some View {
         HStack {
-            RecordingProgressView(viewModel: viewModel)
+            RecordingProgressView()
             Spacer()
             RecordingButton(
                 action:viewModel.recordButtonClicked,
@@ -22,14 +22,10 @@ struct RecordingView: View {
         }.padding()
     }
     
-    init(viewModel: ConversationView.ViewModel) {
-        self.viewModel = viewModel
-    }
-    
 }
 
 struct RecordingView_Previews: PreviewProvider {
     static var previews: some View {
-        RecordingView(viewModel: ConversationView.ViewModel.fixture())
+        RecordingView().environmentObject(ConversationView.ViewModel.fixture())
     }
 }
