@@ -4,7 +4,6 @@
 
 import Foundation
 import Combine
-import SwiftUI
 
 extension ConversationView {
 
