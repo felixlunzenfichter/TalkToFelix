@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7349809E273AA16A00E1EE48 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349809D273AA16A00E1EE48 /* TestError.swift */; };
+		73775D3F277CFCEE00A625A4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73775D3E277CFCEE00A625A4 /* VoiceView.swift */; };
 		73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099922718C84A00D2C453 /* TalkToFelixApp.swift */; };
 		73A099952718C84A00D2C453 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099942718C84A00D2C453 /* ConversationView.swift */; };
 		73A099972718C84B00D2C453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73A099962718C84B00D2C453 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		7349809D273AA16A00E1EE48 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
+		73775D3E277CFCEE00A625A4 /* VoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
 		73A0998F2718C84A00D2C453 /* TalkToFelix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkToFelix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		73A099922718C84A00D2C453 /* TalkToFelixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkToFelixApp.swift; sourceTree = "<group>"; };
 		73A099942718C84A00D2C453 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				73C5FB082751B19000C4E2B8 /* RecordingView.swift */,
 				73C5D129275B0B5400F1FAF0 /* RecordingProgressView.swift */,
 				73C5D12727541C6100F1FAF0 /* RecordingButton.swift */,
+				73775D3E277CFCEE00A625A4 /* VoiceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
 				73C5FB092751B19000C4E2B8 /* RecordingView.swift in Sources */,
 				80AD1E9EBC4CCB4A7A972D63 /* Database.swift in Sources */,
+				73775D3F277CFCEE00A625A4 /* VoiceView.swift in Sources */,
 				73C5D13D2763025500F1FAF0 /* MyPlayer.swift in Sources */,
 				80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */,
 				73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */,

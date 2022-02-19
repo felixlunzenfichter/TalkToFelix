@@ -18,7 +18,7 @@ struct ConversationView: View {
                 VStack {
                     List {
                         ForEach(voices) {voice in
-                            Text(voice.speaker.name)
+                            VoiceView(voice: voice)
                         }
                     }
                     RecordingView(viewModel: self.viewModel)
