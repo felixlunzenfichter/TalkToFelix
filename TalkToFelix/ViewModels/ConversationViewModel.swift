@@ -38,10 +38,13 @@ extension ConversationView {
                 startRecording()
             }
         }
-
+        
         private func startRecording() {
             recorder.start()
-
+            startRecordingAnimation()
+        }
+        
+        fileprivate func startRecordingAnimation() {
             timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
                 self.recordingLength = round(self.recorder.length * 10) / 10
             }
@@ -50,9 +53,11 @@ extension ConversationView {
 
         private func stopRecording() {
             addVoice()
-
             let _ = recorder.stop()
-
+            stopRecordingAnimation()
+        }
+        
+        fileprivate func stopRecordingAnimation() {
             timer?.invalidate()
             recordingLength = 0.0
         }
