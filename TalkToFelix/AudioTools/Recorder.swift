@@ -8,7 +8,8 @@
 import Foundation
 
 protocol Recorder {
-    var length: Double {get}
     func start()
-    func stop() -> Data
+    func pause()
+    func stop()
+    func getRecording() -> Recording
 }

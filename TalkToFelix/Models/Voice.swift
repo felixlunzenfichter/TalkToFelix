@@ -17,8 +17,7 @@ struct Voice: Identifiable, Equatable {
 
     let speaker: User
     let listener: User
-    let audioData: Data
-    let length: Double
+    let recording: Recording
 
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
 
@@ -26,7 +25,7 @@ struct Voice: Identifiable, Equatable {
 
 extension Voice {
     static func fixture() -> Voice {
-        return Voice(speaker: .fixture(), listener: .fixture(), audioData: .fixture(), length: 69)
+        return Voice(speaker: .fixture(), listener: .fixture(), recording: .init(audioData: .fixture(), length: 69))
     }
 }
 

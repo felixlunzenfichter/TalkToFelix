@@ -43,11 +43,18 @@ class MyRecorder: Recorder {
         audioRecorder = try! AVAudioRecorder(url: audioFilename, settings: settings)
         audioRecorder.record()
     }
+    
+    func pause() {
+        audioRecorder.pause()
+    }
 
-    func stop() -> Data {
+    func stop() {
         audioRecorder?.stop()
         audioRecorder = nil
-        return audioData
+    }
+    
+    func getRecording() -> Recording {
+        return Recording(audioData: audioData, length:length)
     }
 
     init() {

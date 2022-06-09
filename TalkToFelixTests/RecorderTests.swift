@@ -16,7 +16,7 @@ class RecorderTests: XCTestCase {
     
     func testLengthOfRecordingIsZeroAtStart() {
         let recorder: Recorder = MyRecorder()
-        XCTAssertEqual(recorder.length, 0)
+        XCTAssertEqual(recorder.getRecording().length, 0)
     }
     
     func testRecordForHalfASecond() {
@@ -25,7 +25,20 @@ class RecorderTests: XCTestCase {
         
         recorder.start()
         usleep(halfASecond)
-        let recordingLength = recorder.length
+        let recordingLength = recorder.getRecording().length
+        
+        XCTAssertGreaterThan(recordingLength, recordingExpectedLength - precision)
+        XCTAssertLessThan(recordingLength, recordingExpectedLength + precision)
+    }
+    
+    func testRecordForHalfASecondThenPause() {
+        let recorder: Recorder = MyRecorder()
+        let recordingExpectedLength = 0.5
+        
+        recorder.start()
+        usleep(halfASecond)
+        recorder.pause()
+        let recordingLength = recorder.getRecording().length
         
         XCTAssertGreaterThan(recordingLength, recordingExpectedLength - precision)
         XCTAssertLessThan(recordingLength, recordingExpectedLength + precision)
@@ -38,13 +51,13 @@ class RecorderTests: XCTestCase {
         
         recorder.start()
         usleep(halfASecond/2)
-        let firstRecordingLength = recorder.length
-        _ = recorder.stop()
+        let firstRecordingLength = recorder.getRecording().length
+        recorder.stop()
         
         recorder.start()
         usleep(halfASecond)
-        let secondRecordingLength = recorder.length
-        _ = recorder.stop()
+        let secondRecordingLength = recorder.getRecording().length
+        recorder.stop()
                 
         XCTAssertGreaterThan(firstRecordingLength, firstRecordingExpectedLength - precision)
         XCTAssertLessThan(firstRecordingLength, firstRecordingExpectedLength + precision)
@@ -55,7 +68,7 @@ class RecorderTests: XCTestCase {
     
     func testAudioDataIsEmptyAfterInitialization() {
         let recorder: Recorder = MyRecorder()
-        let data = recorder.stop()
+        let data = recorder.getRecording().audioData
         XCTAssertEqual(Data(), data)
     }
     
@@ -63,7 +76,7 @@ class RecorderTests: XCTestCase {
         let recorder: Recorder = MyRecorder()
         recorder.start()
         usleep(OneTenthOfASecond)
-        let data = recorder.stop()
+        let data = recorder.getRecording().audioData
         
         XCTAssertNotEqual(Data(), data)
     }

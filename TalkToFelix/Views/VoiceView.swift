@@ -12,7 +12,7 @@ struct VoiceView: View {
     let voice: Voice
 
     var body: some View {
-        Text("\(voice.length, specifier: "%.1f")")
+        Text("\(voice.recording.length , specifier: "%.1f")")
     }
 
     init(voice: Voice) {

@@ -46,14 +46,15 @@ extension ConversationView {
         
         fileprivate func startRecordingAnimation() {
             timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
-                self.recordingLength = round(self.recorder.length * 10) / 10
+                self.recordingLength = round(self.recorder.getRecording().length * 10) / 10
             }
             RunLoop.current.add(timer!, forMode: .common)
         }
 
         private func stopRecording() {
+            recorder.pause()
             addVoice()
-            let _ = recorder.stop()
+            recorder.stop()
             stopRecordingAnimation()
         }
         
@@ -64,7 +65,7 @@ extension ConversationView {
 
         fileprivate func addVoice() {
             var value = try! voices.get()
-            value.append(Voice.fixture())
+            value.append(Voice(speaker: ThisUser(), listener: User(name: "Carli <3"), recording: recorder.getRecording()))
             voices = .success(value)
         }
 
