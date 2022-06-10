@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct RecordingView: View {
     
     @EnvironmentObject var viewModel: ConversationView.ViewModel
@@ -24,6 +25,7 @@ struct RecordingView: View {
     
 }
 
+@available(iOS 15.0, *)
 struct RecordingView_Previews: PreviewProvider {
     static var previews: some View {
         RecordingView().environmentObject(ConversationView.ViewModel.fixture())

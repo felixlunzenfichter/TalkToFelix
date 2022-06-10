@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct ConversationView: View {
     
     @StateObject var viewModel: ViewModel = .fixture()
@@ -31,6 +32,7 @@ struct ConversationView: View {
     }
 }
 
+@available(iOS 15.0, *)
 struct ConversationView_Previews: PreviewProvider {
     static var previews: some View {
         ConversationView()

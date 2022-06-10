@@ -13,6 +13,7 @@ struct VoiceView: View {
 
     var body: some View {
         Text("\(voice.recording.length , specifier: "%.1f")")
+        Text(voice.transcript!)
     }
 
     init(voice: Voice) {
