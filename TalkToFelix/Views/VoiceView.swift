@@ -7,13 +7,17 @@
 
 import SwiftUI
 
+@available(iOS 15.0, *)
 struct VoiceView: View {
 
     let voice: Voice
 
     var body: some View {
-        Text("\(voice.recording.length , specifier: "%.1f")")
-        Text(voice.transcript!)
+        
+        Text("\(voice.recording.length , specifier: "%.1f")").listRowSeparatorTint(.secondary)
+        Text(voice.transcript!).listRowSeparatorTint(.primary)
+            
+        
     }
 
     init(voice: Voice) {
@@ -22,6 +26,7 @@ struct VoiceView: View {
 
 }
 
+@available(iOS 15.0, *)
 struct VoiceView_Previews: PreviewProvider {
     static var previews: some View {
         VoiceView(voice: .fixture())
