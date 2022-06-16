@@ -123,6 +123,8 @@ class MySpeechRecognizer: ObservableObject, SpeechRecognizer {
         if let result = result {
             speak(result.bestTranscription.formattedString)
         }
+        
+        let v = result?.bestTranscription.segments
     }
     
     private func speak(_ message: String) {

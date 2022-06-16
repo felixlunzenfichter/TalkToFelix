@@ -14,11 +14,15 @@ struct VoiceView: View {
 
     var body: some View {
         
-        Text("\(voice.recording.length , specifier: "%.1f")").listRowSeparatorTint(.secondary)
-        Text(voice.transcript!).listRowSeparatorTint(.primary)
+        Text("\(voice.recording.length , specifier: "%.1f")")
+            .listRowSeparatorTint(.secondary)
+        Text(voice.transcript!)
+            .foregroundColor(.green)
+            .listRowSeparatorTint(.primary)
             
         
     }
+    
 
     init(voice: Voice) {
         self.voice = voice

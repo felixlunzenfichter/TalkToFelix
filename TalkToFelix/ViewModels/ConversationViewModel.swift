@@ -63,6 +63,7 @@ extension ConversationView {
         private func stopRecording() {
             recorder.pause()
             speechRecognizer.stopTranscribing()
+            
             addVoice()
             recorder.stop()
             resetRecordingAnimation()
