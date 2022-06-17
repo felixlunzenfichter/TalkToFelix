@@ -12,7 +12,7 @@ struct ConversationView: View {
     @StateObject var viewModel: ViewModel = .fixture()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             switch viewModel.voices {
             case .success(let voices):
                 VStack {
