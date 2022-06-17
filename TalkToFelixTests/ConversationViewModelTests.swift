@@ -97,7 +97,7 @@ import Combine
 
         let expectation = XCTestExpectation(description: "Expected 2 voices in the conversation")
 
-        await Task.sleep(1 * NSEC_PER_SEC)
+        try! await Task.sleep(nanoseconds: 1 * NSEC_PER_SEC)
 
         viewModel.recordButtonClicked()
         viewModel.recordButtonClicked()
@@ -122,14 +122,11 @@ import Combine
     }
 
     func testRecordingLengthUpdatesAfterOneTenthOfASecond() {
+        
+        // Arrange
         let viewModel = ConversationView.ViewModel.fixture()
-
-        viewModel.recordButtonClicked()
-
         var round: Double = 0
-
         let expectation = XCTestExpectation(description: "recordinglength is published once every 0.1 seconds")
-
         viewModel.$recordingLength.sink() {value in
             defer {round += 1}
 
@@ -141,15 +138,19 @@ import Combine
                 self.cancellables.removeAll()
             }
         }.store(in: &cancellables)
+        
+        // Act
+        viewModel.recordButtonClicked()
 
+        // Assert
         wait(for: [expectation], timeout: 0.35)
     }
 
     func testRecordingLengthIsZeroAgainAfterSending() {
+        
         let viewModel = ConversationView.ViewModel.fixture()
         var round: Double = 0
         let expectation = XCTestExpectation(description: "Length of current recording is zero after sending.")
-
         viewModel.$recordingLength.sink() {value in
             defer {round += 1}
             if (round == 2.0) {
