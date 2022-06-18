@@ -7,25 +7,30 @@
 
 import Foundation
 
-struct Voice: Identifiable, Equatable {
+class Voice: Identifiable, Equatable, ObservableObject {
 
+    let id = UUID()
+    
     static func == (lhs: Voice, rhs: Voice) -> Bool {
         lhs.id == rhs.id
     }
 
-    let id = UUID()
-
     let speaker: User
-    let listener: User
+    var listeners: [User]
     let recording: Recording
 
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
 
+    init(listeners: [User] = [], recording: Recording = Recording(audioData: Data(), length: 0.0)) {
+        self.speaker = ThisUser()
+        self.listeners = listeners
+        self.recording = recording
+    }
 }
 
 extension Voice {
     static func fixture() -> Voice {
-        return Voice(speaker: .fixture(), listener: .fixture(), recording: .init(audioData: .fixture(), length: 69))
+        return Voice(listeners: [.fixture()], recording: .init(audioData: .fixture(), length: 69))
     }
 }
 
