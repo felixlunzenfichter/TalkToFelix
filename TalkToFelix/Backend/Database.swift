@@ -10,8 +10,5 @@ protocol Database {
     func getVoices() -> AnyPublisher<[Voice],Error>
 }
 
-enum DatabaseError: Error {
-    case FailedToGetVoices
-}
 
 

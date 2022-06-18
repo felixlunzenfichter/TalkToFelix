@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		733F3D8A285E4CB700DB794E /* ExceptionHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F3D89285E4CB700DB794E /* ExceptionHandling.swift */; };
 		7349809E273AA16A00E1EE48 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349809D273AA16A00E1EE48 /* TestError.swift */; };
 		73775D3F277CFCEE00A625A4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73775D3E277CFCEE00A625A4 /* VoiceView.swift */; };
 		738E64342851625B00E72E2C /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E64332851625B00E72E2C /* Recording.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		733F3D89285E4CB700DB794E /* ExceptionHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionHandling.swift; sourceTree = "<group>"; };
 		7349809D273AA16A00E1EE48 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
 		73775D3E277CFCEE00A625A4 /* VoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
 		738E64332851625B00E72E2C /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
@@ -95,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		733F3D88285E4C9900DB794E /* ExceptionHandling */ = {
+			isa = PBXGroup;
+			children = (
+				733F3D89285E4CB700DB794E /* ExceptionHandling.swift */,
+			);
+			path = ExceptionHandling;
+			sourceTree = "<group>";
+		};
 		733F762C27774BFB00281E3B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 				73A099BC2718C86800D2C453 /* Views */,
 				73A099BD2718C88800D2C453 /* ViewModels */,
 				73A099BE2718C89500D2C453 /* Models */,
+				733F3D88285E4C9900DB794E /* ExceptionHandling */,
 				73C5D12C275B0EEA00F1FAF0 /* AudioTools */,
 				80AD1CECF0DAD49A9996478A /* Backend */,
 				73C5FB05274C905B00C4E2B8 /* TypeConverters */,
@@ -344,6 +355,7 @@
 				73C5D13D2763025500F1FAF0 /* MyPlayer.swift in Sources */,
 				80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */,
 				73C5FB07274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift in Sources */,
+				733F3D8A285E4CB700DB794E /* ExceptionHandling.swift in Sources */,
 				80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

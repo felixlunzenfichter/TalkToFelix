@@ -20,10 +20,7 @@ class MyRecorder: Recorder {
     private var audioRecorder: AVAudioRecorder!
 
     private var audioData: Data {
-        var data: Data
-        do {
-            data = try Data(contentsOf: audioFilename)
-        } catch {
+        guard let data = try Data(contentsOf: self.audioFilename) ~> RecorderError.getDataFailed else {
             return Data()
         }
         return data
@@ -66,5 +63,6 @@ class MyRecorder: Recorder {
     }
 
 }
+
 
 
