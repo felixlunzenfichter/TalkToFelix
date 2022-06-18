@@ -20,7 +20,7 @@ class MyRecorder: Recorder {
     private var audioRecorder: AVAudioRecorder!
 
     private var audioData: Data {
-        guard let data = try Data(contentsOf: self.audioFilename) ~> RecorderError.getDataFailed else {
+        guard let data = try Data(contentsOf: self.audioFilename) ~> RecorderError.getData else {
             return Data()
         }
         return data
@@ -29,16 +29,17 @@ class MyRecorder: Recorder {
     private let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC), AVSampleRateKey: 12000, AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.medium.rawValue]
 
     func start() {
-        do {
+        
+        func startThrows() throws {
             try recordingSession.setCategory(.record)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission {allowed in}
-        } catch {
-            print("failed to start recording with error: \(error)")
+            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder.record()
         }
-
-        audioRecorder = try! AVAudioRecorder(url: audioFilename, settings: settings)
-        audioRecorder.record()
+        
+        try startThrows() ~> RecorderError.start
+        
     }
     
     func pause() {
@@ -55,11 +56,7 @@ class MyRecorder: Recorder {
     }
 
     init() {
-        do {
-            try recordingSession.setCategory(.record, mode: .default)
-        } catch {
-            print("failed to initialize Recorder with error: \(error)")
-        }
+        try recordingSession.setCategory(.record, mode: .default) ~> RecorderError.initialize
     }
 
 }

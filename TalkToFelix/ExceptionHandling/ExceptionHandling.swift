@@ -21,11 +21,13 @@ func ~><T>(expression: @autoclosure () throws -> T, error: Error) -> T? {
 func handle(error: Error) {}
 
 enum DatabaseError: Error {
-    case FailedToGetVoices
+    case failedToGetVoices
 }
 
 enum RecorderError: Error {
-    case getDataFailed
+    case getData
+    case start
+    case initialize
 }
 
 
