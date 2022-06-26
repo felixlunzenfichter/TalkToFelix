@@ -8,22 +8,18 @@
 import Foundation
 import Speech
 
-class Voice: Identifiable, Equatable, ObservableObject {
-
+class Voice: Identifiable, ObservableObject {
+    
     let id = UUID()
     
-    static func == (lhs: Voice, rhs: Voice) -> Bool {
-        lhs.id == rhs.id
-    }
-
     let speaker: User
-    var listeners: [User]
     let recording: Recording
+    var listeners: [User]
     
     @Published var transcription: Transcription
-
+    
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
-
+    
     init(listeners: [User] = [], recording: Recording = Recording(audioData: Data(), length: 0.0), transcription: Transcription = Transcription()) {
         self.speaker = ThisUser()
         self.listeners = listeners
@@ -32,6 +28,11 @@ class Voice: Identifiable, Equatable, ObservableObject {
     }
 }
 
+extension Voice: Equatable {
+    static func == (lhs: Voice, rhs: Voice) -> Bool {
+        lhs.id == rhs.id
+    }}
+
 extension Voice {
     static func fixture() -> Voice {
         return Voice(listeners: [.fixture()], recording: .init(audioData: .fixture(), length: 69))
@@ -39,27 +40,26 @@ extension Voice {
 }
 
 extension Data {
-    static let fixtureData = "00001111"
-
+    static private let fixtureData = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!))
+    
     static func fixture() -> Data {
-        return Data(base64Encoded: fixtureData)!
+        return fixtureData
     }
 }
 
-class Transcription {
+struct Transcription {
+    
+    internal let isFinal: Bool
+    internal var transcript: String {
+        sftranscription.formattedString
+    }
+    
+    private let sftranscription: SFTranscription
     
     internal init(isFinal: Bool = false, sftranscription: SFTranscription = SFTranscription()) {
         self.isFinal = isFinal
         self.sftranscription = sftranscription
     }
-    
-    var isFinal: Bool = false
-    
-    public var transcript: String {
-        sftranscription.formattedString
-    }
-
-    public var sftranscription: SFTranscription
 }
 
 
