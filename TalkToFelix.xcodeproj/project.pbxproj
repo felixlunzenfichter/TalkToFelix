@@ -35,7 +35,6 @@
 		73C5FB092751B19000C4E2B8 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5FB082751B19000C4E2B8 /* RecordingView.swift */; };
 		80AD138A56FC5EDFDF4BEE04 /* MockDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1E645142B204042E3CC1 /* MockDatabase.swift */; };
 		80AD17DCB9B75E09E2513225 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */; };
-		80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD194CC672485E2C4399B7 /* ThisUser.swift */; };
 		80AD1E9EBC4CCB4A7A972D63 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AD1003291428CBED7EC18F /* Database.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +79,6 @@
 		73C5FB06274C90A800C4E2B8 /* ResultToCurrentValueConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultToCurrentValueConverter.swift; sourceTree = "<group>"; };
 		73C5FB082751B19000C4E2B8 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		80AD1003291428CBED7EC18F /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
-		80AD194CC672485E2C4399B7 /* ThisUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThisUser.swift; sourceTree = "<group>"; };
 		80AD195AA6570C5374C7F697 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		80AD1E645142B204042E3CC1 /* MockDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,7 +210,6 @@
 			children = (
 				73A099C12718C98200D2C453 /* User.swift */,
 				73A099C32718CB9900D2C453 /* Voice.swift */,
-				80AD194CC672485E2C4399B7 /* ThisUser.swift */,
 				738E64332851625B00E72E2C /* Recording.swift */,
 			);
 			path = Models;
@@ -367,7 +364,6 @@
 				738E64342851625B00E72E2C /* Recording.swift in Sources */,
 				73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */,
 				73A099C22718C98200D2C453 /* User.swift in Sources */,
-				80AD1C8963A44AFAC14278F4 /* ThisUser.swift in Sources */,
 				73C5FB092751B19000C4E2B8 /* RecordingView.swift in Sources */,
 				80AD1E9EBC4CCB4A7A972D63 /* Database.swift in Sources */,
 				73775D3F277CFCEE00A625A4 /* VoiceView.swift in Sources */,

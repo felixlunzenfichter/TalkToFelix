@@ -21,7 +21,7 @@ class Voice: Identifiable, ObservableObject {
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
     
     init(listeners: [User] = [], recording: Recording = Recording(audioData: Data(), length: 0.0), transcription: Transcription = Transcription()) {
-        self.speaker = ThisUser()
+        self.speaker = User.thisUser()
         self.listeners = listeners
         self.recording = recording
         self.transcription = transcription
