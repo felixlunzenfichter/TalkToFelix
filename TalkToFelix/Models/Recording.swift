@@ -8,6 +8,7 @@
 import Foundation
 
 struct Recording {
-    let audioData: Data
-    let length: Double
+    var audioData: Data = Data()
+    var url: URL = URL(filePath: "")
+    var length: Double = 0.0
 }
