@@ -11,7 +11,7 @@ import Combine
 
 class ResultToCurrentValueSubjectConverterTests: XCTestCase {
     
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     func testResultErrorToCurrentValueSubjectErrorConversion() {
         

@@ -15,7 +15,7 @@ import Combine
     let OneTenthOfASecond: UInt32 = 100000
     let precision: Double = 0.1
 
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
 
     func testWhenViewModelIsIniaitlizedPublishesEmptyVoices() {
         let viewModel = ConversationView.ViewModel.fixture()

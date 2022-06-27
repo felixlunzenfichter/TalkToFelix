@@ -9,7 +9,6 @@ extension ConversationView {
     
     class ViewModel: ObservableObject {
         
-        var cancellables = Set<AnyCancellable>()
         
         @Published private(set) var voices: Result<[Voice], Error> = .success([])
         
@@ -17,6 +16,7 @@ extension ConversationView {
         @Published private (set) var recordingLength: Double = 0.0
         @Published private(set) var isRecording: Bool = false
         
+        private var cancellables = Set<AnyCancellable>()
         private var timer: Timer?
         
         init(database: Database) {
