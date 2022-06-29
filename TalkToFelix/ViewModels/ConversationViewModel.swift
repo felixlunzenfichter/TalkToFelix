@@ -9,7 +9,6 @@ extension ConversationView {
     
     class ViewModel: ObservableObject {
         
-        
         @Published private(set) var voices: Result<[Voice], Error> = .success([])
         
         @Published private var recorder: Recorder = MyRecorder()

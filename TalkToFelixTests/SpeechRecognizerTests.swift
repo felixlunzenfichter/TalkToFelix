@@ -10,65 +10,22 @@ import XCTest
 @testable import TalkToFelix
 import Speech
 
+// Apples speech recoginition service requieres an active internet connection. Tests should not require an internet connection but we
+// will make an exception here. 
+
 final class SpeechRecognizerTests: XCTestCase {
     
-    private var cancellables = Set<AnyCancellable>()
-    private let good = URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!)
-    
-    func testEmptyTranscripton() {
-        
-        // Arrange
-        let expectation = XCTestExpectation(description: "Expected empty voice to give an empty transcrition")
-
-        var round = 0
-        var isFinalValue: Bool {
-            switch round {
-            case 0:
-                return false
-            default:
-                return true
-            }
-        }
-        
-        let voice = Voice()
-        voice.$transcription.sink { value in
-            defer {round+=1}
-            print("Received value: \(value)")
-            guard case let transcription: Transcription  = value else {
-                return XCTFail("Expected a successful Result, got: \(value)")
-            }
-            XCTAssertEqual(transcription.isFinal, isFinalValue)
-            XCTAssert(transcription.transcript == "")
-            if isFinalValue {expectation.fulfill()}
-        }.store(in: &cancellables)
-        
-        // Act
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer(voice: voice)
-        speechRecognizer.finalize()
-        
-        // Assert
-        wait(for: [expectation], timeout: 5.0)
-    }
-    
-    fileprivate func checkGoodTranscript(_ transcription: Published<Transcription>.Publisher.Output, expectation: XCTestExpectation) {
-        if (!transcription.isFinal) {
-            XCTAssert(transcription.transcript == "" || transcription.transcript == "Could")
-        } else {
-            XCTAssert(transcription.transcript == "Could")
-            expectation.fulfill()
-        }
-    }
+    var cancellables = Set<AnyCancellable>()
+    let good = URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!)
     
     func testOneTranscription() {
         let expectation = XCTestExpectation(description: "Expected a transcription")
-        
         let voice = Voice(recording: Recording(url: good))
-        
+        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         voice.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation)
         }.store(in: &cancellables)
         
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         speechRecognizer.transcribe(voice: voice)
         
         wait(for: [expectation], timeout: 5)
@@ -86,19 +43,12 @@ final class SpeechRecognizerTests: XCTestCase {
         let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
         voice.$transcription.sink {transcription in
-            if (!transcription.isFinal) {
-                XCTAssert(transcription.transcript == "" || transcription.transcript == "Could")
-            } else {
-                XCTAssert(transcription.transcript == "Could")
-                expectation.fulfill()
-                speechRecognizer.transcribe(voice: voice2)
-            }
-            
+            self.checkGoodTranscript(transcription, expectation: expectation)
+            speechRecognizer.transcribe(voice: voice2)
         }.store(in: &cancellables)
         
         voice2.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation2)
-            
         }.store(in: &cancellables)
         
         speechRecognizer.transcribe(voice: voice)
@@ -129,4 +79,12 @@ final class SpeechRecognizerTests: XCTestCase {
         wait(for: [expectation, expectation2], timeout: 5)
     }
     
+    fileprivate func checkGoodTranscript(_ transcription: Transcription, expectation: XCTestExpectation) {
+        if (!transcription.isFinal) {
+            XCTAssert(transcription.transcript == "" || transcription.transcript == "Could")
+        } else {
+            XCTAssert(transcription.transcript == "Could")
+            expectation.fulfill()
+        }
+    }
 }

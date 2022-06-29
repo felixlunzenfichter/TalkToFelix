@@ -8,7 +8,5 @@
 import Foundation
 
 protocol SpeechRecognizer {
-    var voiceToBeTranscribed: Voice { get }
-    init(voice: Voice)
-    func finalize() 
+    func transcribe(voice: Voice)
 }

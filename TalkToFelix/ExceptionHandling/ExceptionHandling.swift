@@ -20,6 +20,10 @@ func ~><T>(expression: @autoclosure () throws -> T, error: Error) -> T? {
 
 func handle(error: Error) {}
 
+enum SpeechRecognizerError: Error {
+    case notAvailable
+}
+
 enum DatabaseError: Error {
     case failedToGetVoices
 }

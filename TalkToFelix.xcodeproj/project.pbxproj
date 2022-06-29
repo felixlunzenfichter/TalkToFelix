@@ -147,7 +147,6 @@
 		73A099912718C84A00D2C453 /* TalkToFelix */ = {
 			isa = PBXGroup;
 			children = (
-				73363DE5285F97F4009533A1 /* SpeechRecognition */,
 				73C5D14127630AA800F1FAF0 /* Info.plist */,
 				73A099922718C84A00D2C453 /* TalkToFelixApp.swift */,
 				73A099BC2718C86800D2C453 /* Views */,
@@ -155,6 +154,7 @@
 				73A099BE2718C89500D2C453 /* Models */,
 				733F3D88285E4C9900DB794E /* ExceptionHandling */,
 				73C5D12C275B0EEA00F1FAF0 /* AudioTools */,
+				73363DE5285F97F4009533A1 /* SpeechRecognition */,
 				80AD1CECF0DAD49A9996478A /* Backend */,
 				73C5FB05274C905B00C4E2B8 /* TypeConverters */,
 				73A099962718C84B00D2C453 /* Assets.xcassets */,

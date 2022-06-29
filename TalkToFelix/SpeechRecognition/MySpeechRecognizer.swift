@@ -1,21 +1,49 @@
-//
-//  MyTranscription.swift
-//  TalkToFelix
-//
-//  Created by Felix Lunzenfichter on 19.06.22.
-//
-
+import AVFoundation
 import Foundation
+import Speech
+import SwiftUI
 
-class MySpeechRecognizer: SpeechRecognizer {
+@available(iOS 16.0, *)
+class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
     
-    let voiceToBeTranscribed: Voice
+    var myRecognizer: SFSpeechRecognizer!
+    var serialQueue: DispatchQueue!
+    var group: DispatchGroup!
     
-    required init(voice: Voice) {
-        voiceToBeTranscribed = voice
+    override init() {
+        serialQueue = DispatchQueue(label: "serialQueue")
+        group = DispatchGroup()
+        myRecognizer = SFSpeechRecognizer()
     }
     
-    func finalize() {
-        voiceToBeTranscribed.transcription = Transcription(isFinal: true)
+    func transcribe(voice: Voice) {
+        
+        serialQueue.async { [self] in
+            
+            let request = SFSpeechURLRecognitionRequest(url: voice.recording.url)
+            request.addsPunctuation = true
+            group.wait()
+            group.enter()
+            
+            if (!myRecognizer.isAvailable) {
+                handle(error: SpeechRecognizerError.notAvailable)
+                return
+            }
+            
+            myRecognizer!.recognitionTask(with: request) { (result, error) in
+                guard let result = result else {
+                    handle(error: error!)
+                    return
+                }
+                
+                if result.isFinal {
+                    voice.transcription = Transcription(isFinal: true, sftranscription: result.bestTranscription)
+                    self.group.leave()
+                } else {
+                    voice.transcription = Transcription(sftranscription: result.bestTranscription)
+                }
+            }
+        }
     }
 }
+
