@@ -52,8 +52,8 @@ extension ConversationView {
         
         private func stopRecording() {
             recorder.pause()
-            addVoice()
             recorder.stop()
+            addVoice()
             stopRecordingAnimation()
         }
         
