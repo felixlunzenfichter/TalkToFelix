@@ -166,6 +166,41 @@ import Combine
 
         wait(for: [expectation], timeout: 0.3)
     }
+    
+    func testRecordAndPlay() {
+        // Arrange the ViewModel and its data source
+        let firstExpectedResult: [Voice] = [Voice]()
+        let secondExpectedResult: [Voice] = [Voice.fixture()]
+        var round = 0
+        
+        let mockDatabase = MockDatabase(returning: .success(secondExpectedResult))
+        let viewModel = ConversationView.ViewModel(database: mockDatabase)
+        
+        let expectation = XCTestExpectation(description: "Publishes expected voices successfully")
+        // Act on the ViewModel to trigger the update
+        viewModel.$voices.sink {value in
+            defer {round += 1}
+            guard case .success(let voices) = value else {
+                return XCTFail("Expected a successful Result, got: \(value)")
+            }
+            
+            if(voices == firstExpectedResult) {
+                XCTAssert(voices == firstExpectedResult)
+            } else if (voices == secondExpectedResult) {
+                XCTAssert(voices == secondExpectedResult)
+                viewModel.recordButtonClicked()
+                usleep(self.halfASecond)
+                viewModel.recordButtonClicked()
+            } else {
+                let player = MyPlayer(data: voices.last!.recording.audioData)
+                player.play()
+                expectation.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        // Assert the expected behavior
+        wait(for: [expectation], timeout: 5)
+    }
 
 }
 

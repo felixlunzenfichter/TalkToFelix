@@ -35,7 +35,7 @@ extension Voice: Equatable {
 
 extension Voice {
     static func fixture() -> Voice {
-        return Voice(listeners: [.fixture()], recording: .init(audioData: .fixture(), length: 69))
+        return Voice(listeners: [.fixture()], recording: .fixture())
     }
 }
 
