@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct VoiceView: View {
-
-    let voice: Voice
-
+    
+    @ObservedObject var voice: Voice
+    let player: Player
+    
     var body: some View {
-        Text("\(voice.recording.length , specifier: "%.1f")")
+        VStack (alignment: .leading){
+            Text("\(voice.recording.length , specifier: "%.1f")")
+            Text(voice.transcription.transcript)
+        }.onTapGesture {
+            player.play()
+        }.foregroundColor(voice.transcription.isFinal ? .red : .purple)
     }
-
+    
     init(voice: Voice) {
         self.voice = voice
+        self.player = MyPlayer(data: voice.recording.audioData)
     }
-
+    
 }
 
 struct VoiceView_Previews: PreviewProvider {
