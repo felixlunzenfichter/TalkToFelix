@@ -10,7 +10,20 @@ import AVFAudio
 
 class MyPlayer: Player {
     
-    var audioPlayer: AVAudioPlayer!
+    var duration: Double {
+        return audioPlayer.duration
+    }
+    
+    var currentTime: Double {
+        get {
+            return audioPlayer.currentTime
+        }
+        set(newValue) {
+            audioPlayer.currentTime = newValue
+        }
+    }
+    
+    private var audioPlayer: AVAudioPlayer!
     
     func play() {
         try! AVAudioSession.sharedInstance().setCategory(.playback)

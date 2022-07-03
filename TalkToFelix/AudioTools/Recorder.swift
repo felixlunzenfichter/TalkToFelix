@@ -12,4 +12,5 @@ protocol Recorder {
     func pause()
     func stop()
     func getRecording() -> Recording
+    func getFinalRecording() -> Recording
 }

@@ -35,7 +35,7 @@ class PlayerTests: XCTestCase {
         usleep((1/100) * oneSecond)
         player.pause()
         
-        player.audioPlayer.currentTime = 2
+        player.currentTime = 2
         player.play()
         usleep(oneSecond)
     }

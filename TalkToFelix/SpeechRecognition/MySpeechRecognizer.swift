@@ -32,7 +32,11 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
             
             myRecognizer!.recognitionTask(with: request) { (result, error) in
                 guard let result = result else {
+                    if (error.unsafelyUnwrapped.localizedDescription.contains("No speech")) {
+                        voice.transcription = Transcription(isFinal: true, sftranscription: SFTranscription())
+                    }
                     handle(error: error!)
+                    self.group.leave()
                     return
                 }
                 

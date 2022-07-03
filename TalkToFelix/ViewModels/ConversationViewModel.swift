@@ -10,8 +10,10 @@ extension ConversationView {
     class ViewModel: ObservableObject {
         
         @Published private(set) var voices: Result<[Voice], Error> = .success([])
+       
+        internal var recorder: Recorder = MyRecorder()
+        private var speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
-        @Published private var recorder: Recorder = MyRecorder()
         @Published private (set) var recordingLength: Double = 0.0
         @Published private(set) var isRecording: Bool = false
         
@@ -26,6 +28,7 @@ extension ConversationView {
                 self?.voices = .failure(error)
             }, receiveValue: {[weak self] value in
                 self?.voices = .success(value)
+                value.map {self?.speechRecognizer.transcribe(voice: $0)}
             }).store(in: &cancellables)
         }
         
@@ -51,16 +54,15 @@ extension ConversationView {
         }
         
         private func stopRecording() {
-            recorder.pause()
-            recorder.stop()
-            addVoice()
+            addVoiceToConversation(newVoice: Voice(recording: recorder.getFinalRecording()))
             stopRecordingAnimation()
         }
         
-        fileprivate func addVoice() {
-            var value = try! voices.get()
-            value.append(Voice(recording: recorder.getRecording()))
-            voices = .success(value)
+        fileprivate func addVoiceToConversation(newVoice: Voice) {
+            var voices = try! voices.get()
+            speechRecognizer.transcribe(voice: newVoice)
+            voices.append(newVoice)
+            self.voices = .success(voices)
         }
         
         fileprivate func stopRecordingAnimation() {

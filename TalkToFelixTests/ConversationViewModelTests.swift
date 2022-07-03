@@ -168,18 +168,20 @@ import Combine
     }
     
     func testRecordAndPlay() {
-        // Arrange the ViewModel and its data source
+        let expectation = XCTestExpectation(description: "Player starts.")
         let firstExpectedResult: [Voice] = [Voice]()
         let secondExpectedResult: [Voice] = [Voice.fixture()]
-        var round = 0
         
+        // Arrange the ViewModel and its data source
         let mockDatabase = MockDatabase(returning: .success(secondExpectedResult))
         let viewModel = ConversationView.ViewModel(database: mockDatabase)
         
-        let expectation = XCTestExpectation(description: "Publishes expected voices successfully")
+        var roundsStarted = 0
+        var roundsEnded = 0
         // Act on the ViewModel to trigger the update
         viewModel.$voices.sink {value in
-            defer {round += 1}
+            roundsStarted += 1
+            defer {roundsEnded += 1}
             guard case .success(let voices) = value else {
                 return XCTFail("Expected a successful Result, got: \(value)")
             }
@@ -192,8 +194,51 @@ import Combine
                 usleep(self.halfASecond)
                 viewModel.recordButtonClicked()
             } else {
+                XCTAssert(roundsStarted == 3)
+                XCTAssert(roundsEnded == 1)
                 let player = MyPlayer(data: voices.last!.recording.audioData)
                 player.play()
+                expectation.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        // Assert the expected behavior
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func testRecordingLengthInPlayer() {
+        let expectation = XCTestExpectation(description: "Player knows recording length.")
+        let firstExpectedResult: [Voice] = [Voice]()
+        let secondExpectedResult: [Voice] = [Voice.fixture()]
+        
+        let mockDatabase = MockDatabase(returning: .success(secondExpectedResult))
+        let viewModel = ConversationView.ViewModel(database: mockDatabase)
+        
+        var roundsStarted = 0
+        var roundsEnded = 0
+        viewModel.$voices.sink {value in
+            roundsStarted += 1
+            defer {roundsEnded += 1}
+            guard case .success(let voices) = value else {
+                return XCTFail("Expected a successful Result, got: \(value)")
+            }
+            
+            if(voices == firstExpectedResult) {
+            } else if (voices == secondExpectedResult) {
+                viewModel.recordButtonClicked()
+                usleep(self.halfASecond)
+                viewModel.recordButtonClicked()
+            } else {
+                XCTAssert(roundsStarted == 3)
+                XCTAssert(roundsEnded == 1)
+                
+                let recording = voices.last!.recording
+                let player = MyPlayer(data: recording.audioData)
+                // Player duration correctness is about 0.1 seconds.
+                let playerDuration = floor(10 * player.duration)
+                let recordingDuration = floor(10 * recording.length)
+                
+                XCTAssert(playerDuration == recordingDuration)
                 expectation.fulfill()
             }
         }.store(in: &cancellables)

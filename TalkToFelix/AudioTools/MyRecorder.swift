@@ -52,7 +52,14 @@ class MyRecorder: Recorder {
     }
     
     func getRecording() -> Recording {
-        return Recording(audioData: audioData, length:length)
+        return Recording(audioData: audioData, url: audioFilename, length:length)
+    }
+    
+    func getFinalRecording() -> Recording {
+        audioRecorder.pause()
+        let duration = length
+        stop()
+        return Recording(audioData: audioData, url: audioFilename, length:duration)
     }
 
     init() {
