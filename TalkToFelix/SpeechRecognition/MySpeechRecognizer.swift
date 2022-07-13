@@ -41,7 +41,7 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
                 }
                 
                 if result.isFinal {
-                    voice.transcription = Transcription(isFinal: true, sftranscription: result.bestTranscription)
+                    voice.transcription = Transcription(isFinal: true, sftranscription: result.bestTranscription, sfSpeechRecognitionMetaData: result.speechRecognitionMetadata!)
                     self.group.leave()
                 } else {
                     voice.transcription = Transcription(sftranscription: result.bestTranscription)

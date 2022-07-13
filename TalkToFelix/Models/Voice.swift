@@ -53,13 +53,26 @@ struct Transcription {
     internal var transcript: String {
         sftranscription.formattedString
     }
+    internal var startTime : Double {
+        return sftranscription.segments.first!.timestamp
+    }
+    internal var voicing: Voicing {
+        return Voicing(frameDuration: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.frameDuration)!, values: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.acousticFeatureValuePerFrame)! )
+    }
     
     private let sftranscription: SFTranscription
+    private let sfSpeechRegognitionMetaData: SFSpeechRecognitionMetadata
     
-    internal init(isFinal: Bool = false, sftranscription: SFTranscription = SFTranscription()) {
+    internal init(isFinal: Bool = false, sftranscription: SFTranscription = SFTranscription(), sfSpeechRecognitionMetaData: SFSpeechRecognitionMetadata = SFSpeechRecognitionMetadata()) {
         self.isFinal = isFinal
         self.sftranscription = sftranscription
+        self.sfSpeechRegognitionMetaData = sfSpeechRecognitionMetaData
     }
+}
+
+struct Voicing {
+    let frameDuration: Double
+    let values: [Double]
 }
 
 

@@ -69,7 +69,6 @@ final class SpeechRecognizerTests: XCTestCase {
         
         voice2.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation2)
-            
         }.store(in: &cancellables)
         
         let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
@@ -86,5 +85,44 @@ final class SpeechRecognizerTests: XCTestCase {
             XCTAssert(transcription.transcript == "Could")
             expectation.fulfill()
         }
+    }
+    
+    func testGetVoicingStartTime() {
+        let expectation = XCTestExpectation(description: "Expected voice to be recognized between 2 and 2.2 seconds into the audio.")
+        let voice = Voice(recording: Recording(url: good))
+        
+        voice.$transcription.sink {
+            transcription in
+            if (!transcription.isFinal) {return}
+            let startTime = transcription.startTime
+            XCTAssert(startTime > 2 && startTime < 2.2)
+            expectation.fulfill()
+        }.store(in: &cancellables)
+        
+        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
+        speechRecognizer.transcribe(voice: voice)
+        
+        wait(for: [expectation], timeout: 5)
+    }
+    
+    func testGetVoicingValues() {
+        let expectation = XCTestExpectation(description: "Expected voicing to describe a timeframe with a length between 0.4 and 0.5 seconds.")
+        let voice = Voice(recording: Recording(url: good))
+        
+        voice.$transcription.sink {
+            transcription in
+            if (!transcription.isFinal) {return}
+            let voicing: Voicing = transcription.voicing
+            let values : [Double] = voicing.values
+            let frameDuration: Double = voicing.frameDuration
+            let length = Double(values.count) * frameDuration
+            XCTAssert(0.4 < length && length < 0.5)
+            expectation.fulfill()
+        }.store(in: &cancellables)
+        
+        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
+        speechRecognizer.transcribe(voice: voice)
+        
+        wait(for: [expectation], timeout: 5)
     }
 }
