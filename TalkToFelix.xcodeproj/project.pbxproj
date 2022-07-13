@@ -21,6 +21,7 @@
 		73A099C22718C98200D2C453 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C12718C98200D2C453 /* User.swift */; };
 		73A099C42718CB9900D2C453 /* Voice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099C32718CB9900D2C453 /* Voice.swift */; };
 		73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */; };
+		73BBDBB8287F687E00979C28 /* Transcription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BBDBB7287F687E00979C28 /* Transcription.swift */; };
 		73C5D12827541C6100F1FAF0 /* RecordingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12727541C6100F1FAF0 /* RecordingButton.swift */; };
 		73C5D12A275B0B5400F1FAF0 /* RecordingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D129275B0B5400F1FAF0 /* RecordingProgressView.swift */; };
 		73C5D12E275B0F7E00F1FAF0 /* RecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */; };
@@ -65,6 +66,7 @@
 		73A099C12718C98200D2C453 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		73A099C32718CB9900D2C453 /* Voice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voice.swift; sourceTree = "<group>"; };
 		73B5182527385D3300D667F4 /* ConversationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewModelTests.swift; sourceTree = "<group>"; };
+		73BBDBB7287F687E00979C28 /* Transcription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcription.swift; sourceTree = "<group>"; };
 		73C5D12727541C6100F1FAF0 /* RecordingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingButton.swift; sourceTree = "<group>"; };
 		73C5D129275B0B5400F1FAF0 /* RecordingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingProgressView.swift; sourceTree = "<group>"; };
 		73C5D12D275B0F7E00F1FAF0 /* RecorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderTests.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				73A099C12718C98200D2C453 /* User.swift */,
 				73A099C32718CB9900D2C453 /* Voice.swift */,
 				738E64332851625B00E72E2C /* Recording.swift */,
+				73BBDBB7287F687E00979C28 /* Transcription.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				73C5D13B276301C500F1FAF0 /* Player.swift in Sources */,
 				73C5D130275B129300F1FAF0 /* MyRecorder.swift in Sources */,
 				73A099952718C84A00D2C453 /* ConversationView.swift in Sources */,
+				73BBDBB8287F687E00979C28 /* Transcription.swift in Sources */,
 				73C5D12A275B0B5400F1FAF0 /* RecordingProgressView.swift in Sources */,
 				73363DE4285F97E7009533A1 /* SpeechRecognizer.swift in Sources */,
 				73C5D132275CE26B00F1FAF0 /* Recorder.swift in Sources */,

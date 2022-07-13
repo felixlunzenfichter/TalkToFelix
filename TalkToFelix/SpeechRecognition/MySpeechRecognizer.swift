@@ -33,7 +33,7 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
             myRecognizer!.recognitionTask(with: request) { (result, error) in
                 guard let result = result else {
                     if (error.unsafelyUnwrapped.localizedDescription.contains("No speech")) {
-                        voice.transcription = Transcription(isFinal: true, sftranscription: SFTranscription())
+                        voice.transcription = Transcription(isFinal: true)
                     }
                     handle(error: error!)
                     self.group.leave()
@@ -41,10 +41,10 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
                 }
                 
                 if result.isFinal {
-                    voice.transcription = Transcription(isFinal: true, sftranscription: result.bestTranscription, sfSpeechRecognitionMetaData: result.speechRecognitionMetadata!)
+                    voice.transcription = Transcription(isFinal: true, result: result)
                     self.group.leave()
                 } else {
-                    voice.transcription = Transcription(sftranscription: result.bestTranscription)
+                    voice.transcription = Transcription(result: result)
                 }
             }
         }
