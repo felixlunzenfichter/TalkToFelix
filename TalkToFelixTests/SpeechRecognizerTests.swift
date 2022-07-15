@@ -16,11 +16,10 @@ import Speech
 final class SpeechRecognizerTests: XCTestCase {
     
     var cancellables = Set<AnyCancellable>()
-    let good = URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!)
     
     func testOneTranscription() {
         let expectation = XCTestExpectation(description: "Expected a transcription")
-        let voice = Voice(recording: Recording(url: good))
+        let voice = Voice(recording: Recording(url: goodURL))
         let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         voice.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation)
@@ -37,8 +36,8 @@ final class SpeechRecognizerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Expected a first transcription")
         let expectation2 = XCTestExpectation(description: "Expected a second transcription")
         
-        let voice = Voice(recording: Recording(url: good))
-        let voice2 = Voice(recording: Recording(url: good))
+        let voice = Voice(recording: Recording(url: goodURL))
+        let voice2 = Voice(recording: Recording(url: goodURL))
         
         let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
@@ -60,8 +59,8 @@ final class SpeechRecognizerTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Expected a concurrent transcription")
         let expectation2 = XCTestExpectation(description: "Expected a concurrent transcription")
         
-        let voice = Voice(recording: Recording(url: good))
-        let voice2 = Voice(recording: Recording(url: good))
+        let voice = Voice(recording: Recording(url: goodURL))
+        let voice2 = Voice(recording: Recording(url: goodURL))
         
         voice.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation)
@@ -89,7 +88,7 @@ final class SpeechRecognizerTests: XCTestCase {
     
     func testGetVoicingStartTime() {
         let expectation = XCTestExpectation(description: "Expected voice to be recognized between 2 and 2.2 seconds into the audio.")
-        let voice = Voice(recording: Recording(url: good))
+        let voice = Voice(recording: Recording(url: goodURL))
         
         voice.$transcription.sink {
             transcription in
@@ -107,7 +106,7 @@ final class SpeechRecognizerTests: XCTestCase {
     
     func testGetVoicingValues() {
         let expectation = XCTestExpectation(description: "Expected voicing to describe a timeframe with a length between 0.4 and 0.5 seconds.")
-        let voice = Voice(recording: Recording(url: good))
+        let voice = Voice(recording: Recording(url: goodURL))
         
         voice.$transcription.sink {
             transcription in

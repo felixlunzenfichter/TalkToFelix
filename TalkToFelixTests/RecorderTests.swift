@@ -10,9 +10,7 @@ import XCTest
 
 class RecorderTests: XCTestCase {
     
-    let halfASecond: UInt32 = 500000
-    let OneTenthOfASecond: UInt32 = 100000
-    let precision: Double = 0.1
+
     
     func testLengthOfRecordingIsZeroAtStart() {
         let recorder: Recorder = MyRecorder()

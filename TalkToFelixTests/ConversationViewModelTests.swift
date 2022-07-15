@@ -9,11 +9,7 @@ import XCTest
 @testable import TalkToFelix
 import Combine
 
-@available(iOS 15.0.0, *) class ConversationViewModelTests: XCTestCase {
-    
-    let halfASecond: UInt32 = 500000
-    let OneTenthOfASecond: UInt32 = 100000
-    let precision: Double = 0.1
+@available(iOS 16.0.0, *) class ConversationViewModelTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -187,7 +183,7 @@ import Combine
             } else if (voices == secondExpectedResult) {
                 XCTAssert(voices == secondExpectedResult)
                 viewModel.recordButtonClicked()
-                usleep(self.halfASecond)
+                usleep(halfASecond)
                 viewModel.recordButtonClicked()
             } else {
                 XCTAssert(roundsStarted == 3)
@@ -221,7 +217,7 @@ import Combine
             if(voices == firstExpectedResult) {
             } else if (voices == secondExpectedResult) {
                 viewModel.recordButtonClicked()
-                usleep(self.halfASecond)
+                usleep(halfASecond)
                 viewModel.recordButtonClicked()
             } else {
                 XCTAssert(roundsStarted == 3)

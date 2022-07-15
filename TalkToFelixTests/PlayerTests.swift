@@ -10,23 +10,20 @@ import XCTest
 
 class PlayerTests: XCTestCase {
     
-    let oneSecond: UInt32 = 1000000
-    
-    let data = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!))
     
     func testInitializePlayer() {
-        let _: Player = MyPlayer(data: data)
+        let _: Player = MyPlayer(data: goodData)
     }
     
     func testPlayAudio() {
-        let player: Player = MyPlayer(data: data)
+        let player: Player = MyPlayer(data: goodData)
         
         player.play()
         usleep((1/50) * oneSecond)
     }
     
     func testPlayPausePlay() {
-        let player: MyPlayer = MyPlayer(data: data)
+        let player: MyPlayer = MyPlayer(data: goodData)
 
         player.play()
         usleep((1/100) * oneSecond)

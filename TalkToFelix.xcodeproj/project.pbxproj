@@ -11,7 +11,7 @@
 		73363DE7285F9807009533A1 /* MySpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73363DE6285F9807009533A1 /* MySpeechRecognizer.swift */; };
 		733F3D8A285E4CB700DB794E /* ExceptionHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F3D89285E4CB700DB794E /* ExceptionHandling.swift */; };
 		733F3D8E285EC7D100DB794E /* SpeechRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733F3D8D285EC7D100DB794E /* SpeechRecognizerTests.swift */; };
-		7349809E273AA16A00E1EE48 /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349809D273AA16A00E1EE48 /* TestError.swift */; };
+		7349809E273AA16A00E1EE48 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7349809D273AA16A00E1EE48 /* Helpers.swift */; };
 		73775D3F277CFCEE00A625A4 /* VoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73775D3E277CFCEE00A625A4 /* VoiceView.swift */; };
 		738E64342851625B00E72E2C /* Recording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E64332851625B00E72E2C /* Recording.swift */; };
 		73A099932718C84A00D2C453 /* TalkToFelixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A099922718C84A00D2C453 /* TalkToFelixApp.swift */; };
@@ -54,7 +54,7 @@
 		73363DE6285F9807009533A1 /* MySpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySpeechRecognizer.swift; sourceTree = "<group>"; };
 		733F3D89285E4CB700DB794E /* ExceptionHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionHandling.swift; sourceTree = "<group>"; };
 		733F3D8D285EC7D100DB794E /* SpeechRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerTests.swift; sourceTree = "<group>"; };
-		7349809D273AA16A00E1EE48 /* TestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
+		7349809D273AA16A00E1EE48 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		73775D3E277CFCEE00A625A4 /* VoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceView.swift; sourceTree = "<group>"; };
 		738E64332851625B00E72E2C /* Recording.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recording.swift; sourceTree = "<group>"; };
 		73A0998F2718C84A00D2C453 /* TalkToFelix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TalkToFelix.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +123,7 @@
 		733F762C27774BFB00281E3B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7349809D273AA16A00E1EE48 /* TestError.swift */,
+				7349809D273AA16A00E1EE48 /* Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73C5D1402763035F00F1FAF0 /* PlayerTests.swift in Sources */,
-				7349809E273AA16A00E1EE48 /* TestError.swift in Sources */,
+				7349809E273AA16A00E1EE48 /* Helpers.swift in Sources */,
 				733F3D8E285EC7D100DB794E /* SpeechRecognizerTests.swift in Sources */,
 				73C5FB04274C858200C4E2B8 /* ResultToCurrentValueSubjectConverterTests.swift in Sources */,
 				73B5182627385D3300D667F4 /* ConversationViewModelTests.swift in Sources */,
