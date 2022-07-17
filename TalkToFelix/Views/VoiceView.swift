@@ -10,20 +10,19 @@ import SwiftUI
 struct VoiceView: View {
     
     @ObservedObject var voice: Voice
-    let player: Player
-    
+    @EnvironmentObject var viewModel: ConversationView.ViewModel
+
     var body: some View {
         VStack (alignment: .leading){
             Text("\(voice.recording.length , specifier: "%.1f")")
             Text(voice.transcription.transcript)
         }.onTapGesture {
-            player.play()
+            viewModel.listenTo(voice: voice)
         }.foregroundColor(voice.transcription.isFinal ? .red : .purple)
     }
     
     init(voice: Voice) {
         self.voice = voice
-        self.player = MyPlayer(data: voice.recording.audioData)
     }
     
 }

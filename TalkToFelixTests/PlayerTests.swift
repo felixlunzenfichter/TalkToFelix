@@ -23,7 +23,7 @@ class PlayerTests: XCTestCase {
     }
     
     func testPlayPausePlay() {
-        let player: MyPlayer = MyPlayer(data: goodData)
+        var player: Player = MyPlayer(data: goodData)
 
         player.play()
         usleep((1/100) * oneSecond)

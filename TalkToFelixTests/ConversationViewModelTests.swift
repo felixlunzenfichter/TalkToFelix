@@ -8,6 +8,7 @@
 import XCTest
 @testable import TalkToFelix
 import Combine
+import AVFAudio
 
 @available(iOS 16.0.0, *) class ConversationViewModelTests: XCTestCase {
     
@@ -237,5 +238,38 @@ import Combine
         wait(for: [expectation], timeout: 5)
     }
     
+}
+
+extension ConversationViewModelTests {
+    func testVoiceIsBeingListenedTo() {
+        let expectation = XCTestExpectation(description: "Expected that voice is being listened to completely and listening event is being updated every 0.1 seconds.")
+        let viewModel: ConversationView.ViewModel = .fixture()
+        let voice = Voice.fixture()
+        
+        var expectedEndTime = 0.0
+        var round = 0
+        
+        voice.$listeningEvents.sink { listeningEvents in
+            if (round == 0) {
+                XCTAssert(listeningEvents == [])
+                round += 1
+            } else {
+                XCTAssert(listeningEvents.count == 1)
+                let listeningEvent = listeningEvents.first!
+                XCTAssert(listeningEvent.startTime == 0)
+                if (listeningEvent.isFinal) {
+                    XCTAssert(listeningEvent.endTime == voice.recording.length)
+                    expectation.fulfill()
+                } else {
+                    XCTAssert(listeningEvent.endTime <= expectedEndTime && listeningEvent.endTime > expectedEndTime - 0.3, "Expected \(expectedEndTime) but got \(listeningEvent.endTime!).")
+                    expectedEndTime += 0.1
+                }
+            }
+        }.store(in: &cancellables)
+        
+        viewModel.listenTo(voice: voice)
+        
+        wait(for: [expectation], timeout: 5)
+    }
 }
 

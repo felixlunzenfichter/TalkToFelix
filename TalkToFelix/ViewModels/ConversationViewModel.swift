@@ -12,6 +12,7 @@ extension ConversationView {
         @Published private(set) var voices: Result<[Voice], Error> = .success([])
        
         internal var recorder: Recorder = MyRecorder()
+        private var player: Player!
         private var speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
         @Published private (set) var recordingLength: Double = 0.0
@@ -19,6 +20,7 @@ extension ConversationView {
         
         private var cancellables = Set<AnyCancellable>()
         private var timer: Timer?
+        private var timer2: Timer?
         
         init(database: Database) {
             database.getVoices().sink(receiveCompletion: {[weak self] completion in
@@ -68,6 +70,38 @@ extension ConversationView {
         fileprivate func stopRecordingAnimation() {
             timer?.invalidate()
             recordingLength = 0.0
+        }
+        
+        func listenTo(voice: Voice) {
+            voice.listeningEvents.append(ListeningEvent(isFinal: false, startTime: 0, endTime: 0))
+            initializePlayer(voice: voice)
+            let didFinishPlayingCallback = {
+                var listeningEvent = voice.listeningEvents.last!
+                listeningEvent.isFinal = true
+                listeningEvent.endTime = voice.recording.length
+                voice.listeningEvents[voice.listeningEvents.count - 1] = listeningEvent
+            }
+            startListeningAnimation(voice: voice)
+            player.play(didFinishPlayingCallback: didFinishPlayingCallback)
+        }
+        
+        fileprivate func startListeningAnimation(voice: Voice) {
+            timer2 = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {_ in
+                var listeningEvents = voice.listeningEvents
+                var currentListeningEvent = listeningEvents.last!
+                if (currentListeningEvent.isFinal) {
+                    self.timer2?.invalidate()
+                    return
+                }
+                currentListeningEvent.endTime = self.player.currentTime
+                listeningEvents[listeningEvents.count - 1] = currentListeningEvent
+                voice.listeningEvents = listeningEvents
+            }
+            RunLoop.current.add(timer2!, forMode: .common)
+        }
+        
+        func initializePlayer(voice: Voice) {
+            player = MyPlayer(data: voice.recording.audioData)
         }
         
         static func fixture() -> ViewModel {
