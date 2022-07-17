@@ -13,7 +13,7 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
     override init() {
         serialQueue = DispatchQueue(label: "serialQueue")
         group = DispatchGroup()
-        myRecognizer = SFSpeechRecognizer()
+        myRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "es_MX"))
     }
     
     func transcribe(voice: Voice) {

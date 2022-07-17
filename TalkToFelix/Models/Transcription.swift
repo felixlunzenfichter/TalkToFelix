@@ -26,13 +26,13 @@ extension Transcription {
         sftranscription.segments.first!.timestamp
     }
     internal var voicing: Voicing {
-        Voicing(frameDuration: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.frameDuration)!, values: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.acousticFeatureValuePerFrame)! )
+        Voicing(frameDuration: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.frameDuration) ?? 1, values: (sfSpeechRegognitionMetaData.voiceAnalytics?.voicing.acousticFeatureValuePerFrame) ?? [] )
     }
     private var sftranscription: SFTranscription {
         result.bestTranscription
     }
     private var sfSpeechRegognitionMetaData: SFSpeechRecognitionMetadata {
-        result.speechRecognitionMetadata!
+        result.speechRecognitionMetadata ?? SFSpeechRecognitionMetadata()
     }
 }
 

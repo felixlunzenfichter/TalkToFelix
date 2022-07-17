@@ -6,23 +6,32 @@
 //
 
 import SwiftUI
+import Charts
 
 struct VoiceView: View {
     
-    @ObservedObject var voice: Voice
-    @EnvironmentObject var viewModel: ConversationView.ViewModel
+    @EnvironmentObject var conversationViewModel: ConversationView.ViewModel
+    @ObservedObject var viewModel: VoiceView.ViewModel
 
     var body: some View {
-        VStack (alignment: .leading){
-            Text("\(voice.recording.length , specifier: "%.1f")")
-            Text(voice.transcription.transcript)
+        VStack (alignment: .leading) {
+            Text("\(viewModel.length , specifier: "%.1f")")
+                
+            Chart (viewModel.graphData) {
+                BarMark (
+                    x: .value("segment", $0.index),
+                    y: .value("voicing", $0.value)
+                ).foregroundStyle($0.color)
+            }
+                
+            Text(viewModel.transcript)
         }.onTapGesture {
-            viewModel.listenTo(voice: voice)
-        }.foregroundColor(voice.transcription.isFinal ? .red : .purple)
+            conversationViewModel.listenTo(voice: viewModel.voice)
+        }.foregroundColor(viewModel.textColor)
     }
     
     init(voice: Voice) {
-        self.voice = voice
+        self.viewModel = VoiceView.ViewModel(voice: voice)
     }
     
 }
