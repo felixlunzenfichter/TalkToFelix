@@ -15,6 +15,7 @@ class Voice: Identifiable, ObservableObject {
     let recording: Recording
     var listeners: [User]
     
+    @Published var listeningEvents: Array<ListeningEvent> = []
     @Published var transcription: Transcription
     
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
@@ -46,5 +47,9 @@ extension Data {
     }
 }
 
-
+struct ListeningEvent: Equatable {
+    var isFinal: Bool
+    let startTime: Double
+    var endTime: Double!
+}
 

@@ -8,12 +8,11 @@
 import Foundation
 import AVFAudio
 
-class MyPlayer: Player {
+class MyPlayer: NSObject, AVAudioPlayerDelegate, Player {
     
     var duration: Double {
         return audioPlayer.duration
     }
-    
     var currentTime: Double {
         get {
             return audioPlayer.currentTime
@@ -22,10 +21,17 @@ class MyPlayer: Player {
             audioPlayer.currentTime = newValue
         }
     }
-    
+    var didFinishPlayingCallback: () -> Void
     private var audioPlayer: AVAudioPlayer!
     
-    func play() {
+    required init(data: Data) {
+        audioPlayer = try! AVAudioPlayer(data: data)
+        didFinishPlayingCallback = {}
+    }
+    
+    func play(didFinishPlayingCallback: @escaping () -> Void = {}) {
+        audioPlayer.delegate = self
+        self.didFinishPlayingCallback = didFinishPlayingCallback
         try! AVAudioSession.sharedInstance().setCategory(.playback)
         try! AVAudioSession.sharedInstance().setActive(true)
         audioPlayer.play()
@@ -34,9 +40,8 @@ class MyPlayer: Player {
     func pause() {
         audioPlayer.pause()
     }
-    
-    required init(data: Data) {
-        audioPlayer = try! AVAudioPlayer(data: data)
+   
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        didFinishPlayingCallback()
     }
-    
 }

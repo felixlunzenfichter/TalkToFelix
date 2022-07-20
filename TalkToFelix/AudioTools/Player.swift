@@ -9,7 +9,14 @@ import Foundation
 import AVFAudio
 
 protocol Player {
-    func play()
+    var currentTime: Double { get set }
+    func play(didFinishPlayingCallback: @escaping () -> Void)
     func pause()
-    init(data: Data) 
+    init(data: Data)
+}
+
+extension Player {
+    func play(didFinishPlayingCallback: @escaping () -> Void = {}) {
+        play(didFinishPlayingCallback: didFinishPlayingCallback)
+    }
 }
