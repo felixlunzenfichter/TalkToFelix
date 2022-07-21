@@ -20,12 +20,11 @@ final class SpeechRecognizerTests: XCTestCase {
     func testOneTranscription() {
         let expectation = XCTestExpectation(description: "Expected a transcription")
         let voice: Voice = .fixture()
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         voice.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation)
         }.store(in: &cancellables)
         
-        speechRecognizer.transcribe(voice: voice)
+        MySpeechRecognizer.transcribe(voice: voice)
         
         wait(for: [expectation], timeout: 5)
         
@@ -39,18 +38,17 @@ final class SpeechRecognizerTests: XCTestCase {
         let voice = Voice.fixture()
         let voice2 = Voice.fixture()
         
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
         voice.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation)
-            speechRecognizer.transcribe(voice: voice2)
+            MySpeechRecognizer.transcribe(voice: voice2)
         }.store(in: &cancellables)
         
         voice2.$transcription.sink {transcription in
             self.checkGoodTranscript(transcription, expectation: expectation2)
         }.store(in: &cancellables)
         
-        speechRecognizer.transcribe(voice: voice)
+        MySpeechRecognizer.transcribe(voice: voice)
         
         wait(for: [expectation, expectation2], timeout: 5)
     }
@@ -70,9 +68,8 @@ final class SpeechRecognizerTests: XCTestCase {
             self.checkGoodTranscript(transcription, expectation: expectation2)
         }.store(in: &cancellables)
         
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
-        speechRecognizer.transcribe(voice: voice)
-        speechRecognizer.transcribe(voice: voice2)
+        MySpeechRecognizer.transcribe(voice: voice)
+        MySpeechRecognizer.transcribe(voice: voice2)
         
         wait(for: [expectation, expectation2], timeout: 5)
     }
@@ -98,8 +95,7 @@ final class SpeechRecognizerTests: XCTestCase {
             expectation.fulfill()
         }.store(in: &cancellables)
         
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
-        speechRecognizer.transcribe(voice: voice)
+        MySpeechRecognizer.transcribe(voice: voice)
         
         wait(for: [expectation], timeout: 5)
     }
@@ -119,8 +115,7 @@ final class SpeechRecognizerTests: XCTestCase {
             expectation.fulfill()
         }.store(in: &cancellables)
         
-        let speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
-        speechRecognizer.transcribe(voice: voice)
+        MySpeechRecognizer.transcribe(voice: voice)
         
         wait(for: [expectation], timeout: 5)
     }

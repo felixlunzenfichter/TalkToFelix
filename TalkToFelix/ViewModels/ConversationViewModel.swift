@@ -13,7 +13,6 @@ extension ConversationView {
        
         internal var recorder: Recorder = MyRecorder()
         private var player: Player!
-        private var speechRecognizer: SpeechRecognizer = MySpeechRecognizer()
         
         @Published private (set) var recordingLength: Double = 0.0
         @Published private(set) var isRecording: Bool = false
@@ -30,7 +29,7 @@ extension ConversationView {
                 self?.voices = .failure(error)
             }, receiveValue: {[weak self] value in
                 self?.voices = .success(value)
-                value.map {self?.speechRecognizer.transcribe(voice: $0)}
+                value.map {MySpeechRecognizer.transcribe(voice: $0)}
             }).store(in: &cancellables)
         }
         
@@ -62,7 +61,7 @@ extension ConversationView {
         
         fileprivate func addVoiceToConversation(newVoice: Voice) {
             var voices = try! voices.get()
-            speechRecognizer.transcribe(voice: newVoice)
+            MySpeechRecognizer.transcribe(voice: newVoice)
             voices.append(newVoice)
             self.voices = .success(voices)
         }

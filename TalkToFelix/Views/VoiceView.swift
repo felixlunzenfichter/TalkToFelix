@@ -9,20 +9,20 @@ import SwiftUI
 
 struct VoiceView: View {
     
-    @ObservedObject var voice: Voice
-    @EnvironmentObject var viewModel: ConversationView.ViewModel
+    @StateObject var viewModel: ViewModel
+    @EnvironmentObject var conversationViewModel: ConversationView.ViewModel
 
     var body: some View {
         VStack (alignment: .leading){
-            Text("\(voice.recording.length , specifier: "%.1f")")
-            Text(voice.transcription.transcript)
+            Text("\(viewModel.duration, specifier: "%.1f")")
+            Text(viewModel.transcript)
         }.onTapGesture {
-            viewModel.listenTo(voice: voice)
-        }.foregroundColor(voice.transcription.isFinal ? .red : .purple)
+            conversationViewModel.listenTo(voice: viewModel.voice)
+        }.foregroundColor(viewModel.transcriptIsFinal ? .red : .purple)
     }
     
     init(voice: Voice) {
-        self.voice = voice
+        _viewModel = StateObject(wrappedValue: ViewModel(voice: voice))
     }
     
 }

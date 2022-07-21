@@ -4,7 +4,7 @@ import Speech
 import SwiftUI
 
 @available(iOS 16.0, *)
-class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
+private class SpeechRecognizerInstance: NSObject, ObservableObject {
     
     var myRecognizer: SFSpeechRecognizer!
     var serialQueue: DispatchQueue!
@@ -51,3 +51,9 @@ class MySpeechRecognizer: NSObject, ObservableObject, SpeechRecognizer {
     }
 }
 
+class MySpeechRecognizer: SpeechRecognizer{
+    private static let speechrecognizer = SpeechRecognizerInstance()
+    static func transcribe(voice: Voice) {
+        speechrecognizer.transcribe(voice: voice)
+    }
+}
