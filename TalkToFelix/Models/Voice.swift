@@ -20,7 +20,7 @@ class Voice: Identifiable, ObservableObject {
     
     //  visual representaiton  https://developer.apple.com/documentation/accelerate/visualizing_sound_as_an_audio_spectrogram
     
-    init(listeners: [User] = [], recording: Recording = Recording(audioData: Data(), length: 0.0), transcription: Transcription = Transcription()) {
+    init(listeners: [User] = [], recording: Recording, transcription: Transcription = Transcription()) {
         self.speaker = User.thisUser()
         self.listeners = listeners
         self.recording = recording
@@ -31,7 +31,8 @@ class Voice: Identifiable, ObservableObject {
 extension Voice: Equatable {
     static func == (lhs: Voice, rhs: Voice) -> Bool {
         lhs.id == rhs.id
-    }}
+    }
+}
 
 extension Voice {
     static func fixture() -> Voice {
@@ -40,10 +41,18 @@ extension Voice {
 }
 
 extension Data {
-    static private let fixtureData = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!))
+    static private let goodData = try! Data(contentsOf: .fixture())
     
     static func fixture() -> Data {
-        fixtureData
+        goodData
+    }
+}
+
+extension URL {
+    private static let goodURL = URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!)
+
+    static func fixture() -> URL {
+        goodURL
     }
 }
 
@@ -52,4 +61,3 @@ struct ListeningEvent: Equatable {
     let startTime: Double
     var endTime: Double!
 }
-

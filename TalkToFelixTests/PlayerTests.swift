@@ -12,18 +12,18 @@ class PlayerTests: XCTestCase {
     
     
     func testInitializePlayer() {
-        let _: Player = MyPlayer(data: goodData)
+        let _: Player = MyPlayer(data: .fixture())
     }
     
     func testPlayAudio() {
-        let player: Player = MyPlayer(data: goodData)
+        let player: Player = MyPlayer(data: .fixture())
         
         player.play()
         usleep((1/50) * oneSecond)
     }
     
     func testPlayPausePlay() {
-        var player: Player = MyPlayer(data: goodData)
+        var player: Player = MyPlayer(data: .fixture())
 
         player.play()
         usleep((1/100) * oneSecond)

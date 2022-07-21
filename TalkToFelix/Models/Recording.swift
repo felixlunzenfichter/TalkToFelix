@@ -8,16 +8,13 @@
 import Foundation
 
 struct Recording {
-    var audioData: Data = Data()
-    var url: URL = URL(filePath: "")
-    var length: Double = 0.0
+    let audioData: Data
+    let url: URL
+    let length: Double 
 }
 
 extension Recording {
-    static private let url = URL(fileURLWithPath: Bundle.main.path(forResource: "good.aac", ofType:nil)!)
-
     static func fixture() -> Recording {
-        Recording(audioData: .fixture(), url: url, length: 69)
-        
+        Recording(audioData: .fixture(), url: .fixture(), length: 69)
     }
 }

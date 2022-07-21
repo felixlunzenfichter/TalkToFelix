@@ -10,8 +10,6 @@ import XCTest
 
 class RecorderTests: XCTestCase {
     
-
-    
     func testLengthOfRecordingIsZeroAtStart() {
         let recorder: Recorder = MyRecorder()
         XCTAssertEqual(recorder.getRecording().length, 0)
