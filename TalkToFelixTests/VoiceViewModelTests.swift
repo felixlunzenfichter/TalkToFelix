@@ -53,5 +53,45 @@ final class VoiceViewModelTests: XCTestCase {
         
         wait(for: [transcriptionExpectation, transcriptionIsFinalExpectation], timeout: 500.0)
     }
+    
+    func testShowListeningProgress() {
+        let expectation = XCTestExpectation(description: "Expected to see listening progress.")
+        let voice = Voice.fixture()
+        let viewModel = VoiceView.ViewModel(voice: voice)
+        let conversationViewModel = ConversationView.ViewModel.fixture()
+        
+//        let frameDuration = 0.1
+//        let startTime = 0.5
+//        let duration = 2.5
+//        let values = [Double](repeating: 0.2, count: 20)
+        
+        var time = 0.0
+        viewModel.$voicingGraphData.sink { voicingGraphData in
+            defer {time += 0.1}
+            let i = 0
+            voicingGraphData.map { element in
+                if (element.time < time) {
+                    XCTAssert(element.listeningState == ListeningState.hasBeenListenedTo)
+                } else if (element.time == time) {
+                    XCTAssert(element.listeningState == ListeningState.isBeingListenedTo)
+                } else {
+                    XCTAssert(element.listeningState == ListeningState.hasNotBeenListenedTo, "Received: \(element) at time \(time)")
+                }
+            }
+            if (time == 2.6) {
+                expectation.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        viewModel.$transcriptIsFinal.sink {
+            if($0) {
+                conversationViewModel.listenTo(voice: voice)
+            }
+        }.store(in: &cancellables)
+        
+        MySpeechRecognizer.transcribe(voice: voice)
+        
+        wait(for: [expectation], timeout: 800)
+    }
 }
 
